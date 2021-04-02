@@ -1,13 +1,13 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {StatusBar} from 'react-native';
+import WelcomeScreen from './screens/WelcomeScreen';
 
 const App: React.FC = () => {
   return (
-    <View>
-      <Text style={{fontFamily: 'ArchivoNarrow-Medium', color: '#fff'}}>
-        RentX
-      </Text>
-    </View>
+    <>
+      <StatusBar translucent={true} backgroundColor={'transparent'} />
+      <WelcomeScreen />
+    </>
   );
 };
 export default App;
