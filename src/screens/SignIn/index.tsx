@@ -22,7 +22,7 @@ import {
 
 import Password from '../../assets/icons/password.svg';
 import Email from '../../assets/icons/email.svg';
-import {StatusBar} from 'react-native';
+import {KeyboardAvoidingView, StatusBar} from 'react-native';
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -31,63 +31,65 @@ const SignIn: React.FC = () => {
     <>
       <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'} />
       <Container>
-        <Header>
-          <GoBackButton>
-            <Icon name={'chevron-left'} size={24} color={'#AEAEB3'} />
-          </GoBackButton>
-        </Header>
-        <Content>
-          <TextArea>
-            <Title>Estamos quase lá.</Title>
-            <Subtitle>
-              Faça seu login para começar uma experiência incrível.
-            </Subtitle>
-          </TextArea>
-          <Form>
-            <InputContainer>
-              <IconContainer>
-                <Email width={28} height={28} />
-              </IconContainer>
-              <Input
-                placeholder={'E-mail'}
-                placeholderTextColor={'#AEAEB3'}
-                keyboardType={'email-address'}
-                onChangeText={text => setEmail(text)}
-                value={email}
-              />
-            </InputContainer>
-            <InputContainer>
-              <IconContainer>
-                <Password width={28} height={28} />
-              </IconContainer>
-              <Input
-                placeholder={'Senha'}
-                placeholderTextColor={'#AEAEB3'}
-                secureTextEntry={true}
-                onChangeText={text => setPassword(text)}
-                value={password}
-              />
-              <ChangePasswordVisibilityButton
-                onPress={() => {
-                  console.log('lol');
-                }}>
+        <KeyboardAvoidingView behavior={'position'}>
+          <Header>
+            <GoBackButton>
+              <Icon name={'chevron-left'} size={24} color={'#AEAEB3'} />
+            </GoBackButton>
+          </Header>
+          <Content>
+            <TextArea>
+              <Title>Estamos quase lá.</Title>
+              <Subtitle>
+                Faça seu login para começar uma experiência incrível.
+              </Subtitle>
+            </TextArea>
+            <Form>
+              <InputContainer>
                 <IconContainer>
-                  <Icon name={'eye'} size={28} color={'#47474d'} />
+                  <Email width={28} height={28} />
                 </IconContainer>
-              </ChangePasswordVisibilityButton>
-            </InputContainer>
-            <Buttons>
-              <ForgotPasswordButton>
-                <ForgotPasswordButtonText>
-                  Esqueci minha senha.
-                </ForgotPasswordButtonText>
-              </ForgotPasswordButton>
-              <LoginButton>
-                <LoginButtonText>Login</LoginButtonText>
-              </LoginButton>
-            </Buttons>
-          </Form>
-        </Content>
+                <Input
+                  placeholder={'E-mail'}
+                  placeholderTextColor={'#AEAEB3'}
+                  keyboardType={'email-address'}
+                  onChangeText={text => setEmail(text)}
+                  value={email}
+                />
+              </InputContainer>
+              <InputContainer>
+                <IconContainer>
+                  <Password width={28} height={28} />
+                </IconContainer>
+                <Input
+                  placeholder={'Senha'}
+                  placeholderTextColor={'#AEAEB3'}
+                  secureTextEntry={true}
+                  onChangeText={text => setPassword(text)}
+                  value={password}
+                />
+                <ChangePasswordVisibilityButton
+                  onPress={() => {
+                    console.log('lol');
+                  }}>
+                  <IconContainer>
+                    <Icon name={'eye'} size={28} color={'#47474d'} />
+                  </IconContainer>
+                </ChangePasswordVisibilityButton>
+              </InputContainer>
+              <Buttons>
+                <ForgotPasswordButton>
+                  <ForgotPasswordButtonText>
+                    Esqueci minha senha.
+                  </ForgotPasswordButtonText>
+                </ForgotPasswordButton>
+                <LoginButton>
+                  <LoginButtonText>Login</LoginButtonText>
+                </LoginButton>
+              </Buttons>
+            </Form>
+          </Content>
+        </KeyboardAvoidingView>
       </Container>
     </>
   );
