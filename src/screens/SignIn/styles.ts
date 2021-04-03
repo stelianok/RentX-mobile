@@ -88,6 +88,7 @@ export const LoginButton = styled(RectButton)`
   align-items: center;
 
   height: 56px;
+  margin-bottom: 30px;
 `;
 export const LoginButtonText = styled.Text`
   color: #fff;

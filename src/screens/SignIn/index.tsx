@@ -22,7 +22,7 @@ import {
 
 import Password from '../../assets/icons/password.svg';
 import Email from '../../assets/icons/email.svg';
-import {KeyboardAvoidingView, StatusBar} from 'react-native';
+import {KeyboardAvoidingView, Platform, StatusBar} from 'react-native';
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -31,7 +31,8 @@ const SignIn: React.FC = () => {
     <>
       <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'} />
       <Container>
-        <KeyboardAvoidingView behavior={'position'}>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'position'}>
           <Header>
             <GoBackButton>
               <Icon name={'chevron-left'} size={24} color={'#AEAEB3'} />
