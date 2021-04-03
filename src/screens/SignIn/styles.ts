@@ -1,4 +1,4 @@
-import {BorderlessButton, RectButton} from 'react-native-gesture-handler';
+import {RectButton} from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
@@ -11,7 +11,7 @@ export const Container = styled.View`
   padding: 20px;
 `;
 export const Header = styled.View`
-  margin-bottom: 120px;
+  margin-bottom: 80px;
 `;
 export const GoBackButton = styled.TouchableOpacity``;
 export const Content = styled.KeyboardAvoidingView`
@@ -20,6 +20,7 @@ export const Content = styled.KeyboardAvoidingView`
 
 export const TextArea = styled.View`
   margin-right: 150px;
+  margin-bottom: 25px;
 `;
 export const Title = styled.Text`
   color: #47474d;
@@ -67,18 +68,16 @@ export const Input = styled.TextInput`
 `;
 
 export const ChangePasswordVisibilityButton = styled.TouchableOpacity``;
-export const Buttons = styled.View`
-  flex: 1;
-`;
+export const Buttons = styled.View``;
 export const ForgotPasswordButton = styled.TouchableOpacity`
   align-self: flex-end;
   align-content: center;
 
-  margin-top: 20px;
+  margin-top: 15px;
+  margin-bottom: 40px;
 `;
 export const ForgotPasswordButtonText = styled.Text`
   color: #737380;
-
   font-family: 'Inter-Regular';
 `;
 export const LoginButton = styled(RectButton)`
@@ -88,9 +87,7 @@ export const LoginButton = styled(RectButton)`
   justify-content: center;
   align-items: center;
 
-  padding: 18px;
-
-  margin-top: 80px;
+  height: 56px;
 `;
 export const LoginButtonText = styled.Text`
   color: #fff;
