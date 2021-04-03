@@ -1,12 +1,12 @@
 import React from 'react';
 import {StatusBar} from 'react-native';
-import WelcomeScreen from './screens/WelcomeScreen';
+import SignIn from './screens/SignIn';
 
 const App: React.FC = () => {
   return (
     <>
       <StatusBar translucent={true} backgroundColor={'transparent'} />
-      <WelcomeScreen />
+      <SignIn />
     </>
   );
 };
