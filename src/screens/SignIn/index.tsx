@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import Icon from 'react-native-vector-icons/Feather';
 import {
   Container,
@@ -27,6 +27,18 @@ import {KeyboardAvoidingView, Platform, StatusBar} from 'react-native';
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isSecureTextEntry, setIsSecureTextEntry] = useState(true);
+  const [eyeIconName, setEyeIconName] = useState('eye');
+
+  const handleEyeIcon = useCallback(() => {
+    isSecureTextEntry ? setEyeIconName('eye') : setEyeIconName('eye-off');
+  }, [isSecureTextEntry]);
+
+  const handlePasswordVisibility = useCallback(() => {
+    setIsSecureTextEntry(!isSecureTextEntry);
+    handleEyeIcon();
+  }, [handleEyeIcon, isSecureTextEntry]);
+
   return (
     <>
       <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'} />
@@ -65,16 +77,16 @@ const SignIn: React.FC = () => {
                 <Input
                   placeholder={'Senha'}
                   placeholderTextColor={'#AEAEB3'}
-                  secureTextEntry={true}
+                  secureTextEntry={isSecureTextEntry}
                   onChangeText={text => setPassword(text)}
                   value={password}
                 />
                 <ChangePasswordVisibilityButton
                   onPress={() => {
-                    console.log('lol');
+                    handlePasswordVisibility();
                   }}>
                   <IconContainer>
-                    <Icon name={'eye'} size={28} color={'#47474d'} />
+                    <Icon name={eyeIconName} size={28} color={'#47474d'} />
                   </IconContainer>
                 </ChangePasswordVisibilityButton>
               </InputContainer>
