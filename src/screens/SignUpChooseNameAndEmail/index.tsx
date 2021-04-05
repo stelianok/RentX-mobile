@@ -28,7 +28,7 @@ const SignUpChooseNameAndEmail: React.FC = () => {
       <Container>
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'position'}>
-          <GoBackHeader />
+          <GoBackHeader numberOfScreens={2} currentActiveScreenIndex={1} />
           <Content>
             <TextArea>
               <Title>Crie sua conta</Title>
