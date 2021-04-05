@@ -1,16 +1,48 @@
-import React from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import Icon from 'react-native-vector-icons/Feather';
 
-import {Container, Header, GoBackButton} from './styles';
+import {Container, GoBackButton, Pagination, Dot} from './styles';
 
-const GoBackHeader: React.FC = () => {
+interface IProps {
+  numberOfScreens?: number;
+  currentActiveScreenIndex?: number;
+}
+const GoBackHeader: React.FC<IProps> = ({
+  numberOfScreens = 1,
+  currentActiveScreenIndex = 1,
+}) => {
+  const [dots, setDots] = useState<Number[]>([]);
+  const fillRange = (start: number, end: number) => {
+    return Array(end - start + 1)
+      .fill(10)
+      .map((item, index) => start + index);
+  };
+  const generateDotArray = useCallback(() => {
+    let filledArray = fillRange(0, numberOfScreens - 1);
+    setDots(filledArray);
+  }, [numberOfScreens]);
+
+  useEffect(() => {
+    generateDotArray();
+  }, [generateDotArray]);
   return (
     <Container>
-      <Header>
-        <GoBackButton>
-          <Icon name={'chevron-left'} size={24} color={'#AEAEB3'} />
-        </GoBackButton>
-      </Header>
+      <GoBackButton>
+        <Icon name={'chevron-left'} size={24} color={'#AEAEB3'} />
+      </GoBackButton>
+      {numberOfScreens && (
+        <Pagination>
+          {dots.map(index => (
+            <Dot
+              key={Number(index)}
+              isActive={
+                Number(index) === currentActiveScreenIndex - 1 ? true : false
+              }>
+              •
+            </Dot>
+          ))}
+        </Pagination>
+      )}
     </Container>
   );
 };
