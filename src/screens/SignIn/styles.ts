@@ -10,10 +10,7 @@ export const Container = styled.View`
 
   padding: 20px;
 `;
-export const Header = styled.View`
-  margin-bottom: 80px;
-`;
-export const GoBackButton = styled.TouchableOpacity``;
+
 export const Content = styled.KeyboardAvoidingView`
   justify-content: flex-start;
 `;

@@ -2,8 +2,6 @@ import React, {useState, useCallback} from 'react';
 import Icon from 'react-native-vector-icons/Feather';
 import {
   Container,
-  Header,
-  GoBackButton,
   Content,
   TextArea,
   Title,
@@ -23,6 +21,7 @@ import {
 import Password from '../../assets/icons/password.svg';
 import Email from '../../assets/icons/email.svg';
 import {KeyboardAvoidingView, Platform, StatusBar} from 'react-native';
+import GoBackHeader from '../../components/GoBackHeader';
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -45,11 +44,7 @@ const SignIn: React.FC = () => {
       <Container>
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'position'}>
-          <Header>
-            <GoBackButton>
-              <Icon name={'chevron-left'} size={24} color={'#AEAEB3'} />
-            </GoBackButton>
-          </Header>
+          <GoBackHeader />
           <Content>
             <TextArea>
               <Title>Estamos quase lá.</Title>
