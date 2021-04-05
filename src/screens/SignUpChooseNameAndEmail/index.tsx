@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import {KeyboardAvoidingView, Platform, StatusBar} from 'react-native';
+
 import {
   Container,
   Content,
@@ -16,12 +18,12 @@ import {
 
 import User from '../../assets/icons/user.svg';
 import Email from '../../assets/icons/email.svg';
-import {KeyboardAvoidingView, Platform, StatusBar} from 'react-native';
 import GoBackHeader from '../../components/GoBackHeader';
 
 const SignUpChooseNameAndEmail: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+
   return (
     <>
       <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'} />
@@ -29,6 +31,7 @@ const SignUpChooseNameAndEmail: React.FC = () => {
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'position'}>
           <GoBackHeader numberOfScreens={2} currentActiveScreenIndex={1} />
+
           <Content>
             <TextArea>
               <Title>Crie sua conta</Title>

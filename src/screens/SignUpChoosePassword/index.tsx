@@ -20,6 +20,7 @@ import GoBackHeader from '../../components/GoBackHeader';
 import Password from '../../assets/icons/password.svg';
 
 import {KeyboardAvoidingView, Platform, StatusBar} from 'react-native';
+import SuccessModal from '../SuccessModal';
 
 const SignUpChoosePassword: React.FC = () => {
   const [password, setPassword] = useState('');
@@ -38,12 +39,15 @@ const SignUpChoosePassword: React.FC = () => {
 
   return (
     <>
-      <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'} />
+      <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'} hidden />
+
       <Container>
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'position'}>
           <GoBackHeader numberOfScreens={2} currentActiveScreenIndex={2} />
+
           <Content>
+            <SuccessModal />
             <TextArea>
               <Title>Crie sua conta</Title>
               <Subtitle>Faça seu cadastro de forma rápida e fácil</Subtitle>
