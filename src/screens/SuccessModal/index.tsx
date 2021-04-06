@@ -15,6 +15,7 @@ import {
 
 import Checked from '../../assets/icons/vcheck.svg';
 import Union from '../../assets/icons/union.svg';
+import {useNavigation} from '@react-navigation/native';
 
 interface IProps {
   modalVisibility: boolean;
@@ -29,7 +30,7 @@ const SuccessModal: React.FC<IProps> = ({
   buttonText,
 }) => {
   const width = useWindowDimensions().width;
-
+  const navigation = useNavigation();
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   useEffect(() => {
@@ -59,6 +60,7 @@ const SuccessModal: React.FC<IProps> = ({
         <SubmitButton
           onPress={() => {
             setIsModalVisible(false);
+            navigation.navigate('SignIn');
           }}>
           <SubmitButtonText>{buttonText}</SubmitButtonText>
         </SubmitButton>
