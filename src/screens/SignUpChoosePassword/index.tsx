@@ -28,6 +28,8 @@ const SignUpChoosePassword: React.FC = () => {
   const [isSecureTextEntry, setIsSecureTextEntry] = useState(true);
   const [eyeIconName, setEyeIconName] = useState('eye');
 
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   const handleEyeIcon = useCallback(() => {
     isSecureTextEntry ? setEyeIconName('eye') : setEyeIconName('eye-off');
   }, [isSecureTextEntry]);
@@ -37,71 +39,78 @@ const SignUpChoosePassword: React.FC = () => {
     handleEyeIcon();
   }, [handleEyeIcon, isSecureTextEntry]);
 
+  const handleModalVisibility = useCallback(() => {
+    setIsModalVisible(true);
+  }, []);
+
   return (
-    <>
-      <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'} hidden />
-
-      <Container>
-        <KeyboardAvoidingView
-          behavior={Platform.OS === 'ios' ? 'padding' : 'position'}>
-          <GoBackHeader numberOfScreens={2} currentActiveScreenIndex={2} />
-
-          <Content>
-            <SuccessModal />
-            <TextArea>
-              <Title>Crie sua conta</Title>
-              <Subtitle>Faça seu cadastro de forma rápida e fácil</Subtitle>
-            </TextArea>
-            <Form>
-              <Description>2. Dados</Description>
-              <InputContainer>
+    <Container>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'position'}>
+        <GoBackHeader numberOfScreens={2} currentActiveScreenIndex={2} />
+        <SuccessModal
+          title={'Conta criada!'}
+          subtitle={'Agora é só fazer login e aproveitar.'}
+          buttonText={'Ok'}
+          modalVisibility={isModalVisible}
+        />
+        <Content>
+          <TextArea>
+            <Title>Crie sua conta</Title>
+            <Subtitle>Faça seu cadastro de forma rápida e fácil</Subtitle>
+          </TextArea>
+          <Form>
+            <Description>2. Dados</Description>
+            <InputContainer>
+              <IconContainer>
+                <Password width={28} height={28} />
+              </IconContainer>
+              <Input
+                placeholder={'Senha'}
+                placeholderTextColor={'#AEAEB3'}
+                secureTextEntry={isSecureTextEntry}
+                onChangeText={text => setPassword(text)}
+                value={password}
+              />
+              <ChangePasswordVisibilityButton
+                onPress={() => {
+                  handlePasswordVisibility();
+                }}>
                 <IconContainer>
-                  <Password width={28} height={28} />
+                  <Icon name={eyeIconName} size={28} color={'#47474d'} />
                 </IconContainer>
-                <Input
-                  placeholder={'Senha'}
-                  placeholderTextColor={'#AEAEB3'}
-                  secureTextEntry={isSecureTextEntry}
-                  onChangeText={text => setPassword(text)}
-                  value={password}
-                />
-                <ChangePasswordVisibilityButton
-                  onPress={() => {
-                    handlePasswordVisibility();
-                  }}>
-                  <IconContainer>
-                    <Icon name={eyeIconName} size={28} color={'#47474d'} />
-                  </IconContainer>
-                </ChangePasswordVisibilityButton>
-              </InputContainer>
-              <InputContainer>
+              </ChangePasswordVisibilityButton>
+            </InputContainer>
+            <InputContainer>
+              <IconContainer>
+                <Password width={28} height={28} />
+              </IconContainer>
+              <Input
+                placeholder={'Repetir senha'}
+                placeholderTextColor={'#AEAEB3'}
+                secureTextEntry={isSecureTextEntry}
+                onChangeText={text => setConfirmPassword(text)}
+                value={confirmPassword}
+              />
+              <ChangePasswordVisibilityButton
+                onPress={() => {
+                  handlePasswordVisibility();
+                }}>
                 <IconContainer>
-                  <Password width={28} height={28} />
+                  <Icon name={eyeIconName} size={28} color={'#47474d'} />
                 </IconContainer>
-                <Input
-                  placeholder={'Repetir senha'}
-                  placeholderTextColor={'#AEAEB3'}
-                  secureTextEntry={isSecureTextEntry}
-                  onChangeText={text => setConfirmPassword(text)}
-                  value={confirmPassword}
-                />
-                <ChangePasswordVisibilityButton
-                  onPress={() => {
-                    handlePasswordVisibility();
-                  }}>
-                  <IconContainer>
-                    <Icon name={eyeIconName} size={28} color={'#47474d'} />
-                  </IconContainer>
-                </ChangePasswordVisibilityButton>
-              </InputContainer>
-              <SignUpButton>
-                <SignUpButtonText>Cadastrar</SignUpButtonText>
-              </SignUpButton>
-            </Form>
-          </Content>
-        </KeyboardAvoidingView>
-      </Container>
-    </>
+              </ChangePasswordVisibilityButton>
+            </InputContainer>
+            <SignUpButton
+              onPress={() => {
+                handleModalVisibility();
+              }}>
+              <SignUpButtonText>Cadastrar</SignUpButtonText>
+            </SignUpButton>
+          </Form>
+        </Content>
+      </KeyboardAvoidingView>
+    </Container>
   );
 };
 

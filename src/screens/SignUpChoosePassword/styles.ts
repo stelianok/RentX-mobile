@@ -82,7 +82,7 @@ export const Input = styled.TextInput`
   width: 100%;
 `;
 
-export const SignUpButton = styled(RectButton)`
+export const SignUpButton = styled.TouchableOpacity`
   background-color: #dc1637;
   width: 100%;
 
