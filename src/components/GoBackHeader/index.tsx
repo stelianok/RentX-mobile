@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/core';
 import React, {useCallback, useEffect, useState} from 'react';
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -11,6 +12,7 @@ const GoBackHeader: React.FC<IProps> = ({
   numberOfScreens = 1,
   currentActiveScreenIndex = 1,
 }) => {
+  const navigation = useNavigation();
   const [dots, setDots] = useState<Number[]>([]);
   const fillRange = (start: number, end: number) => {
     return Array(end - start + 1)
@@ -27,10 +29,10 @@ const GoBackHeader: React.FC<IProps> = ({
   }, [generateDotArray]);
   return (
     <Container>
-      <GoBackButton>
+      <GoBackButton onPress={() => navigation.goBack()}>
         <Icon name={'chevron-left'} size={24} color={'#AEAEB3'} />
       </GoBackButton>
-      {numberOfScreens && (
+      {numberOfScreens > 1 && (
         <Pagination>
           {dots.map(index => (
             <Dot
