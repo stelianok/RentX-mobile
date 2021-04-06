@@ -1,10 +1,9 @@
 import React from 'react';
-import SignIn from './screens/SignIn';
-
+import Routes from './routes';
 const App: React.FC = () => {
   return (
     <>
-      <SignIn />
+      <Routes />
     </>
   );
 };
