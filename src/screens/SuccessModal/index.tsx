@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Alert, useWindowDimensions} from 'react-native';
 
 import {
   Container,
   Content,
+  UnionIconContainer,
   IconContainer,
+  TextArea,
   Title,
   Subtitle,
   SubmitButton,
@@ -14,10 +16,25 @@ import {
 import Checked from '../../assets/icons/vcheck.svg';
 import Union from '../../assets/icons/union.svg';
 
-const SuccessModal: React.FC = () => {
-  const [isModalVisible, setIsModalVisible] = useState(true);
-
+interface IProps {
+  modalVisibility: boolean;
+  title: string;
+  subtitle: string;
+  buttonText: string;
+}
+const SuccessModal: React.FC<IProps> = ({
+  modalVisibility = false,
+  title,
+  subtitle,
+  buttonText,
+}) => {
   const width = useWindowDimensions().width;
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  useEffect(() => {
+    setIsModalVisible(modalVisibility);
+  }, [modalVisibility]);
 
   return (
     <Container
@@ -26,11 +43,25 @@ const SuccessModal: React.FC = () => {
       statusBarTranslucent={true}
       visible={isModalVisible}
       onRequestClose={() => {
-        Alert.alert('Modal has been closed.');
         setIsModalVisible(!isModalVisible);
       }}>
       <Content>
-        <Union width={width} height={235} />
+        <UnionIconContainer>
+          <Union width={width} height={270} />
+        </UnionIconContainer>
+        <IconContainer>
+          <Checked width={35} height={35} />
+        </IconContainer>
+        <TextArea>
+          <Title>{title}</Title>
+          <Subtitle>{subtitle}</Subtitle>
+        </TextArea>
+        <SubmitButton
+          onPress={() => {
+            setIsModalVisible(false);
+          }}>
+          <SubmitButtonText>{buttonText}</SubmitButtonText>
+        </SubmitButton>
       </Content>
     </Container>
   );
