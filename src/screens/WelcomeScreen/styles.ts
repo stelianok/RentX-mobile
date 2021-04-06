@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import {RectButton} from 'react-native-gesture-handler';
-import UnionIcon from '../../assets/icons/union.svg';
+import RedUnionIcon from '../../assets/icons/red_union.svg';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
@@ -10,7 +10,7 @@ export const Container = styled.SafeAreaView`
   align-items: center;
 `;
 
-export const Union = styled(UnionIcon)`
+export const Union = styled(RedUnionIcon)`
   margin-top: 125px;
   margin-bottom: 125px;
 `;
