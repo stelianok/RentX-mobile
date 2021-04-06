@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import Onboarding from 'react-native-onboarding-swiper';
 import OnboardingItem from '../../components/OnboardingItem';
 import {StyleSheet} from 'react-native';
+import {useNavigation} from '@react-navigation/core';
 
 const styles = StyleSheet.create({
   title: {
@@ -29,6 +30,7 @@ const styles = StyleSheet.create({
   },
 });
 const OnboardingScreen: React.FC = () => {
+  const navigation = useNavigation();
   return (
     <Onboarding
       nextLabel={<Icon name={'chevron-right'} size={24} color={'#AEAEB3'} />}
@@ -43,6 +45,7 @@ const OnboardingScreen: React.FC = () => {
       subTitleStyles={styles.subtitle}
       allowFontScaling={false}
       controlStatusBar={false}
+      onDone={() => navigation.navigate('Welcome')}
       pages={[
         {
           backgroundColor: '#fff',
