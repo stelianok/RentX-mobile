@@ -19,11 +19,13 @@ import {
 import User from '../../assets/icons/user.svg';
 import Email from '../../assets/icons/email.svg';
 import GoBackHeader from '../../components/GoBackHeader';
+import {useNavigation} from '@react-navigation/native';
 
 const SignUpChooseNameAndEmail: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
+  const navigation = useNavigation();
   return (
     <>
       <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'} />
@@ -62,7 +64,10 @@ const SignUpChooseNameAndEmail: React.FC = () => {
                   value={email}
                 />
               </InputContainer>
-              <NextButton>
+              <NextButton
+                onPress={() => {
+                  navigation.navigate('SignUp02');
+                }}>
                 <NextButtonText>Próximo</NextButtonText>
               </NextButton>
             </Form>
