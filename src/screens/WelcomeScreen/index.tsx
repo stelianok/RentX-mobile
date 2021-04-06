@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/core';
 import React from 'react';
 
 import {
@@ -17,6 +18,8 @@ import {
 } from './styles';
 
 const WelcomeScreen: React.FC = () => {
+  const navigation = useNavigation();
+
   return (
     <Container>
       <Union height={50} width={80} />
@@ -26,14 +29,23 @@ const WelcomeScreen: React.FC = () => {
       </Content>
       <Footer>
         <Buttons>
-          <SignInButton>
+          <SignInButton
+            onPress={() => {
+              navigation.navigate('SignIn');
+            }}>
             <SignInText>Login</SignInText>
           </SignInButton>
-          <SignUpButton>
+          <SignUpButton
+            onPress={() => {
+              navigation.navigate('SignUp01');
+            }}>
             <SignUpText>Cadastro</SignUpText>
           </SignUpButton>
         </Buttons>
-        <BackButton>
+        <BackButton
+          onPress={() => {
+            navigation.goBack();
+          }}>
           <BackButtonText>Voltar</BackButtonText>
         </BackButton>
       </Footer>
