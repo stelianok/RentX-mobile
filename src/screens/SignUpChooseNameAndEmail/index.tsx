@@ -9,12 +9,10 @@ import {
   Subtitle,
   Form,
   Description,
-  InputContainer,
-  IconContainer,
-  Input,
   NextButton,
   NextButtonText,
 } from './styles';
+import Input from '../../components/Input';
 
 import User from '../../assets/icons/user.svg';
 import Email from '../../assets/icons/email.svg';
@@ -41,29 +39,21 @@ const SignUpChooseNameAndEmail: React.FC = () => {
             </TextArea>
             <Form>
               <Description>1. Dados</Description>
-              <InputContainer>
-                <IconContainer>
-                  <User width={28} height={28} />
-                </IconContainer>
-                <Input
-                  placeholder={'Nome'}
-                  placeholderTextColor={'#AEAEB3'}
-                  onChangeText={text => setName(text)}
-                  value={name}
-                />
-              </InputContainer>
-              <InputContainer>
-                <IconContainer>
-                  <Email width={28} height={28} />
-                </IconContainer>
-                <Input
-                  placeholder={'E-mail'}
-                  placeholderTextColor={'#AEAEB3'}
-                  keyboardType={'email-address'}
-                  onChangeText={text => setEmail(text)}
-                  value={email}
-                />
-              </InputContainer>
+              <Input
+                IconComponent={User}
+                placeholder={'Nome'}
+                placeholderTextColor={'#AEAEB3'}
+                onChangeText={text => setName(text)}
+                value={name}
+              />
+              <Input
+                IconComponent={Email}
+                placeholder={'E-mail'}
+                placeholderTextColor={'#AEAEB3'}
+                keyboardType={'email-address'}
+                onChangeText={text => setEmail(text)}
+                value={email}
+              />
               <NextButton
                 onPress={() => {
                   navigation.navigate('SignUp02');
