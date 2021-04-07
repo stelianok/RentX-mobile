@@ -1,8 +1,6 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
-  flex: 1;
-`;
+export const Container = styled.View``;
 
 export const InputContainer = styled.View`
   flex-direction: row;
@@ -27,4 +25,3 @@ export const InputText = styled.TextInput`
   padding: 15px;
   margin-left: 5px;
 `;
-export const ChangePasswordVisibilityButton = styled.TouchableOpacity``;
