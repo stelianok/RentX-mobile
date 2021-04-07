@@ -28,6 +28,7 @@ const PasswordInput: React.FC<InputProps> = ({IconComponent, ...rest}) => {
   useEffect(() => {
     handleEyeIcon();
   }, [handleEyeIcon]);
+
   return (
     <Container>
       <InputContainer>
