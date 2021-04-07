@@ -1,5 +1,8 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import {
+  CardStyleInterpolators,
+  createStackNavigator,
+} from '@react-navigation/stack';
 
 import OnboardingScreen from '../screens/OnboardingScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
@@ -17,8 +20,20 @@ const AppRoutes: React.FC = () => (
     <App.Screen name="Onboarding" component={OnboardingScreen} />
     <App.Screen name="Welcome" component={WelcomeScreen} />
     <App.Screen name="SignIn" component={SignIn} />
-    <App.Screen name="SignUp01" component={SignUpChooseNameAndEmail} />
-    <App.Screen name="SignUp02" component={SignUpChoosePassword} />
+    <App.Screen
+      name="SignUp01"
+      component={SignUpChooseNameAndEmail}
+      options={{
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}
+    />
+    <App.Screen
+      name="SignUp02"
+      component={SignUpChoosePassword}
+      options={{
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}
+    />
   </App.Navigator>
 );
 
