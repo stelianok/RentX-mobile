@@ -42,7 +42,7 @@ const OnboardingScreen: React.FC = () => {
           justifyContent: 'center',
           alignItems: 'flex-start',
         }}
-        transitionAnimationDuration={500}
+        transitionAnimationDuration={200}
         titleStyles={styles.title}
         subTitleStyles={styles.subtitle}
         allowFontScaling={false}
