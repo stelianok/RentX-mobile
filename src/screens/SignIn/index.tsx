@@ -7,10 +7,6 @@ import {
   Title,
   Subtitle,
   Form,
-  InputContainer,
-  IconContainer,
-  Input,
-  ChangePasswordVisibilityButton,
   Buttons,
   ForgotPasswordButton,
   ForgotPasswordButtonText,
@@ -18,25 +14,17 @@ import {
   LoginButtonText,
 } from './styles';
 
-import Password from '../../assets/icons/password.svg';
-import Email from '../../assets/icons/email.svg';
+import PasswordIcon from '../../assets/icons/password.svg';
+import EmailIcon from '../../assets/icons/email.svg';
 import {KeyboardAvoidingView, Platform, StatusBar} from 'react-native';
 import GoBackHeader from '../../components/GoBackHeader';
+
+import Input from '../../components/Input';
+import PasswordInput from '../../components/PasswordInput';
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isSecureTextEntry, setIsSecureTextEntry] = useState(true);
-  const [eyeIconName, setEyeIconName] = useState('eye');
-
-  const handleEyeIcon = useCallback(() => {
-    isSecureTextEntry ? setEyeIconName('eye') : setEyeIconName('eye-off');
-  }, [isSecureTextEntry]);
-
-  const handlePasswordVisibility = useCallback(() => {
-    setIsSecureTextEntry(!isSecureTextEntry);
-    handleEyeIcon();
-  }, [handleEyeIcon, isSecureTextEntry]);
 
   return (
     <>
@@ -53,38 +41,22 @@ const SignIn: React.FC = () => {
               </Subtitle>
             </TextArea>
             <Form>
-              <InputContainer>
-                <IconContainer>
-                  <Email width={28} height={28} />
-                </IconContainer>
-                <Input
-                  placeholder={'E-mail'}
-                  placeholderTextColor={'#AEAEB3'}
-                  keyboardType={'email-address'}
-                  onChangeText={text => setEmail(text)}
-                  value={email}
-                />
-              </InputContainer>
-              <InputContainer>
-                <IconContainer>
-                  <Password width={28} height={28} />
-                </IconContainer>
-                <Input
-                  placeholder={'Senha'}
-                  placeholderTextColor={'#AEAEB3'}
-                  secureTextEntry={isSecureTextEntry}
-                  onChangeText={text => setPassword(text)}
-                  value={password}
-                />
-                <ChangePasswordVisibilityButton
-                  onPress={() => {
-                    handlePasswordVisibility();
-                  }}>
-                  <IconContainer>
-                    <Icon name={eyeIconName} size={28} color={'#47474d'} />
-                  </IconContainer>
-                </ChangePasswordVisibilityButton>
-              </InputContainer>
+              <Input
+                IconComponent={EmailIcon}
+                placeholder={'E-mail'}
+                placeholderTextColor={'#AEAEB3'}
+                keyboardType={'email-address'}
+                onChangeText={text => setEmail(text)}
+                value={email}
+              />
+              <PasswordInput
+                IconComponent={PasswordIcon}
+                placeholder={'Senha'}
+                placeholderTextColor={'#AEAEB3'}
+                onChangeText={text => setPassword(text)}
+                value={password}
+              />
+
               <Buttons>
                 <ForgotPasswordButton>
                   <ForgotPasswordButtonText>
