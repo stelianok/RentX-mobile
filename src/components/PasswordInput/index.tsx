@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {TextInputProps} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -23,9 +23,11 @@ const PasswordInput: React.FC<InputProps> = ({IconComponent, ...rest}) => {
 
   const handlePasswordVisibility = useCallback(() => {
     setIsPasswordProtected(!isPasswordProtected);
-    handleEyeIcon();
-  }, [handleEyeIcon, isPasswordProtected]);
+  }, [isPasswordProtected]);
 
+  useEffect(() => {
+    handleEyeIcon();
+  }, [handleEyeIcon]);
   return (
     <Container>
       <InputContainer>
@@ -37,10 +39,7 @@ const PasswordInput: React.FC<InputProps> = ({IconComponent, ...rest}) => {
           secureTextEntry={isPasswordProtected}
           {...rest}
         />
-        <ChangePasswordVisibilityButton
-          onPress={() => {
-            handlePasswordVisibility();
-          }}>
+        <ChangePasswordVisibilityButton onPress={handlePasswordVisibility}>
           <IconContainer>
             <Icon name={eyeIconName} size={28} color={'#47474d'} />
           </IconContainer>
