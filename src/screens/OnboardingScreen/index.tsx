@@ -4,31 +4,10 @@ import Icon from 'react-native-vector-icons/Feather';
 
 import Onboarding from 'react-native-onboarding-swiper';
 import OnboardingItem from '../../components/OnboardingItem';
-import {StatusBar, StyleSheet} from 'react-native';
+import {StatusBar} from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 
-const styles = StyleSheet.create({
-  title: {
-    color: '#47474D',
-    fontFamily: 'ArchivoNarrow-Bold',
-    fontWeight: 'bold',
-    fontSize: 40,
-    textAlign: 'left',
-
-    marginLeft: 30,
-    marginRight: 150,
-  },
-  subtitle: {
-    color: '#7A7A80',
-
-    fontFamily: 'Inter-Regular',
-    fontSize: 15,
-
-    textAlign: 'left',
-    marginLeft: 30,
-    marginRight: 130,
-  },
-});
+import styles from './styles';
 const OnboardingScreen: React.FC = () => {
   const navigation = useNavigation();
   return (
