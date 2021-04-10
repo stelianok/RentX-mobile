@@ -23,7 +23,7 @@ interface IProps {
   name: string;
   image: any;
   price: number;
-  fuel_type: 'eletric' | 'gas' | 'alcohol';
+  fuel_type?: 'eletric' | 'gas' | 'alcohol';
 }
 
 const CarCard: React.FC<IProps> = ({brand, name, image, price, fuel_type}) => {
@@ -39,7 +39,7 @@ const CarCard: React.FC<IProps> = ({brand, name, image, price, fuel_type}) => {
   }, [fuel_type]);
 
   return (
-    <Container>
+    <SubmitButton android_ripple={{color: '#aeaeb3'}}>
       <Header>
         <TextArea>
           <Subtitle>{brand}</Subtitle>
@@ -62,7 +62,7 @@ const CarCard: React.FC<IProps> = ({brand, name, image, price, fuel_type}) => {
           <InactiveDot>•</InactiveDot>
         </Pagination>
       </Footer>
-    </Container>
+    </SubmitButton>
   );
 };
 export default CarCard;
