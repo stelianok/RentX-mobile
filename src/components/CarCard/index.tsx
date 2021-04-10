@@ -39,7 +39,7 @@ const CarCard: React.FC<IProps> = ({brand, name, image, price, fuel_type}) => {
   }, [fuel_type]);
 
   return (
-    <SubmitButton android_ripple={{color: '#aeaeb3'}}>
+    <Container android_ripple={{color: '#aeaeb3'}}>
       <Header>
         <TextArea>
           <Subtitle>{brand}</Subtitle>
@@ -62,7 +62,7 @@ const CarCard: React.FC<IProps> = ({brand, name, image, price, fuel_type}) => {
           <InactiveDot>•</InactiveDot>
         </Pagination>
       </Footer>
-    </SubmitButton>
+    </Container>
   );
 };
 export default CarCard;

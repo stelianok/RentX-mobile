@@ -6,7 +6,7 @@ import Energy from '../../assets/icons/energy.svg';
 import Leaf from '../../assets/icons/leaf.svg';
 import Gas from '../../assets/icons/gas.svg';
 
-export const SubmitButton = styled.Pressable`
+export const Container = styled.Pressable`
   flex: 1;
 
   background-color: #f4f5f6;
