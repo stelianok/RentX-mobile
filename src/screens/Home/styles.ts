@@ -1,4 +1,3 @@
-import {BorderlessButton} from 'react-native-gesture-handler';
 import Filter from '../../assets/icons/filter.svg';
 
 import styled from 'styled-components/native';
@@ -80,5 +79,6 @@ export const NumberOfCars = styled.Text`
 
   margin-right: 15px;
 `;
-export const FilterButton = styled(BorderlessButton)``;
+
+export const FilterButton = styled.Pressable``;
 export const FilterIcon = styled(Filter)``;

@@ -16,6 +16,7 @@ import {
   RowContainer,
   NumberOfCars,
   FilterButton,
+  FilterIconContainer,
   FilterIcon,
 } from './styles';
 
@@ -26,12 +27,14 @@ import Lancer from '../../assets/images/Lancer.png';
 import Porche from '../../assets/images/Porche.png';
 import Volvo from '../../assets/images/Volvo.png';
 
+import {FlatList} from 'react-native';
+
 interface Car {
   brand: string;
   name: string;
   image: any;
   price: number;
-  fuel_type: 'eletric' | 'gas' | 'alcohol';
+  fuel_type?: 'eletric' | 'gas' | 'alcohol';
 }
 const cars: Car[] = [
   {
@@ -46,37 +49,37 @@ const cars: Car[] = [
     name: 'RS 5 Coupé',
     image: Audi,
     price: 470,
-    fuel_type: 'eletric',
   },
   {
     brand: 'PORCHE',
     name: 'Panameraa',
     image: Porche,
     price: 235,
-    fuel_type: 'eletric',
+    fuel_type: 'gas',
   },
   {
     brand: 'CHEVROLET',
     name: 'Corvette Z06',
     image: Corvete,
     price: 943,
-    fuel_type: 'eletric',
+    fuel_type: 'gas',
   },
   {
     brand: 'VOLVO',
     name: 'XC40',
     image: Volvo,
     price: 260,
-    fuel_type: 'eletric',
+    fuel_type: 'alcohol',
   },
   {
     brand: 'MITSUBISHI',
     name: 'Lancer EVO X',
     image: Lancer,
     price: 605,
-    fuel_type: 'eletric',
+    fuel_type: 'gas',
   },
 ];
+
 const Home: React.FC = () => {
   return (
     <>
@@ -100,24 +103,31 @@ const Home: React.FC = () => {
             <ResultTitle>Resultados</ResultTitle>
             <RowContainer>
               <NumberOfCars>3 carros</NumberOfCars>
-              <FilterButton>
-                <FilterIcon width={35} height={35} />
+              <FilterButton
+                android_ripple={{
+                  color: '#aeaeb3',
+                  borderless: true,
+                  radius: 25,
+                }}
+                onPress={() => {
+                  console.warn('lol');
+                }}>
+                <FilterIcon width={30} height={30} />
               </FilterButton>
             </RowContainer>
           </ResultContainer>
-          <CarCard
-            name={'Hurracan'}
-            brand={'LAMBORGHINI'}
-            price={580}
-            fuel_type={'eletric'}
-            image={Lambo}
-          />
-          <CarCard
-            name={'Panamera'}
-            brand={'PORCHE'}
-            price={800}
-            fuel_type={'gas'}
-            image={Porche}
+          <FlatList
+            data={cars}
+            keyExtractor={item => item.name}
+            renderItem={({item}: {item: Car}) => (
+              <CarCard
+                name={item.name}
+                brand={item.brand}
+                price={item.price}
+                fuel_type={item.fuel_type}
+                image={item.image}
+              />
+            )}
           />
         </Content>
       </Container>
