@@ -16,7 +16,6 @@ import {
   RowContainer,
   NumberOfCars,
   FilterButton,
-  FilterIconContainer,
   FilterIcon,
 } from './styles';
 
