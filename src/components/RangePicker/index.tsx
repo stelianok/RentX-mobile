@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState, useCallback} from 'react';
+import React, {useCallback} from 'react';
 import MultiSlider, {
   MultiSliderProps,
 } from '@ptomasroos/react-native-multi-slider';
