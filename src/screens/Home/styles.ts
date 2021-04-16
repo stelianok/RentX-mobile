@@ -1,12 +1,13 @@
-import Filter from '../../assets/icons/filter.svg';
-
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Feather';
 
+import Filter from '../../assets/icons/filter.svg';
+
 export const Container = styled.View`
   flex: 1;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
 `;
+
 export const Header = styled.View`
   background-color: #1b1b1f;
 
@@ -81,4 +82,5 @@ export const NumberOfCars = styled.Text`
 `;
 
 export const FilterButton = styled.Pressable``;
+
 export const FilterIcon = styled(Filter)``;

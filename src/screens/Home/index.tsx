@@ -27,6 +27,7 @@ import Porche from '../../assets/images/Porche.png';
 import Volvo from '../../assets/images/Volvo.png';
 
 import {FlatList} from 'react-native';
+import Filter from '../../components/Filter';
 
 interface Car {
   brand: string;
@@ -84,6 +85,7 @@ const Home: React.FC = () => {
     <>
       <StatusBar backgroundColor={'#1b1b1f'} barStyle={'light-content'} />
       <Container>
+        <Filter />
         <Header>
           <DateContainer>
             <DateTitle>De</DateTitle>
