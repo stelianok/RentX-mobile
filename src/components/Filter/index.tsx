@@ -1,5 +1,4 @@
 import React, {useState, useCallback} from 'react';
-import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import {
   FilterModal,
   ModalContainer,
@@ -8,9 +7,6 @@ import {
   CleanPreferencesButton,
   CleanPreferencesText,
   Section,
-  SliderContainer,
-  SliderMarker,
-  SliderMarkerColumn,
   ModalText,
   ModalDivider,
   PricePerDay,
@@ -26,7 +22,7 @@ import {
   SubmitButton,
   SubmitButtonText,
 } from './styles';
-import {Text, View} from 'react-native';
+import RangePicker from '../RangePicker';
 
 const Filter: React.FC = () => {
   const [isGasFuel, setIsGasFuel] = useState(false);
@@ -36,8 +32,6 @@ const Filter: React.FC = () => {
   const [isAutomaticTransmission, setAutomaticTransmission] = useState(false);
   const [isManualTransmission, setManualTransmission] = useState(false);
 
-  const [minPricePerDay, setMinPricePerDay] = useState(100);
-  const [maxPricePerDay, setMaxPricePerDay] = useState(975);
   const [pricesPerDay, setPricesPerDay] = useState([120, 900]);
 
   const handleGasFuel = useCallback(() => {
@@ -71,9 +65,6 @@ const Filter: React.FC = () => {
     setAutomaticTransmission(false);
   }, []);
 
-  const handleSliderValueChange = useCallback((values: Array<Number>) => {
-    setPricesPerDay(values);
-  }, []);
   return (
     <FilterModal animationType="slide" visible={true} transparent>
       <ModalContainer>
@@ -91,33 +82,14 @@ const Filter: React.FC = () => {
             R${pricesPerDay[0]} - R${pricesPerDay[1]}
           </PricePerDay>
         </Section>
-        <SliderContainer>
-          <MultiSlider
-            values={[pricesPerDay[0], pricesPerDay[1]]}
-            sliderLength={320}
-            onValuesChange={handleSliderValueChange}
-            min={120}
-            max={900}
-            step={10}
-            selectedStyle={{backgroundColor: '#dc1637', height: 4}}
-            unselectedStyle={{backgroundColor: '#F4F5F6', height: 4}}
-            customMarker={() => {
-              return (
-                <SliderMarker
-                  style={{
-                    shadowColor: '#000',
-                    shadowOffset: {width: 1, height: 1},
-                    shadowOpacity: 0.1,
-                    shadowRadius: 3,
-                    elevation: 8,
-                  }}>
-                  <SliderMarkerColumn />
-                  <SliderMarkerColumn />
-                </SliderMarker>
-              );
-            }}
-          />
-        </SliderContainer>
+        <RangePicker
+          rangeArray={pricesPerDay}
+          setRangeArray={setPricesPerDay}
+          sliderLength={320}
+          min={120}
+          max={900}
+          step={10}
+        />
 
         <ModalText>Combustível</ModalText>
         <FuelTypesContainer>
