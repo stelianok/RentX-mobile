@@ -1,5 +1,4 @@
 import {Image} from 'react-native';
-import {RectButton} from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
 
 import Energy from '../../assets/icons/energy.svg';
