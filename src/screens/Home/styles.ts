@@ -5,7 +5,23 @@ import Filter from '../../assets/icons/filter.svg';
 
 export const Container = styled.View`
   flex: 1;
-  /* background-color: #ffffff; */
+  background-color: #ffffff;
+`;
+
+export const ModalSubmitButton = styled.Pressable`
+  background-color: #dc1637;
+  width: 100%;
+
+  justify-content: center;
+  align-items: center;
+
+  height: 56px;
+`;
+
+export const ModalSubmitButtonText = styled.Text`
+  color: #fff;
+  font-family: 'Inter-Regular';
+  font-size: 18px;
 `;
 
 export const Header = styled.View`

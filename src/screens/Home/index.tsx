@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useState, useCallback} from 'react';
 import {StatusBar} from 'react-native';
 import CarCard from '../../components/CarCard';
 
 import {
   Container,
+  ModalSubmitButton,
+  ModalSubmitButtonText,
   Header,
   DateContainer,
   DateTitle,
@@ -81,11 +83,31 @@ const cars: Car[] = [
 ];
 
 const Home: React.FC = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const handleModalVisibility = useCallback(() => {
+    setIsModalVisible(!isModalVisible);
+  }, [isModalVisible]);
+
   return (
     <>
       <StatusBar backgroundColor={'#1b1b1f'} barStyle={'light-content'} />
       <Container>
-        <Filter />
+        <Filter
+          animationType="slide"
+          transparent={true}
+          visible={isModalVisible}
+          onRequestClose={() => {
+            setIsModalVisible(!isModalVisible);
+          }}>
+          <ModalSubmitButton
+            onPress={() => {
+              setIsModalVisible(!isModalVisible);
+            }}
+            android_ripple={{color: '#fff'}}>
+            <ModalSubmitButtonText>Confirmar</ModalSubmitButtonText>
+          </ModalSubmitButton>
+        </Filter>
         <Header>
           <DateContainer>
             <DateTitle>De</DateTitle>
@@ -111,7 +133,7 @@ const Home: React.FC = () => {
                   radius: 25,
                 }}
                 onPress={() => {
-                  console.warn('lol');
+                  handleModalVisibility();
                 }}>
                 <FilterIcon width={30} height={30} />
               </FilterButton>
