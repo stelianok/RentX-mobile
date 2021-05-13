@@ -1,4 +1,6 @@
 import React, {useState, useCallback} from 'react';
+import {ModalBaseProps} from 'react-native';
+
 import {
   FilterModal,
   ModalContainer,
@@ -10,50 +12,20 @@ import {
   ModalText,
   ModalDivider,
   PricePerDay,
-  FuelButton,
-  EnergyIcon,
-  FuelButtonText,
-  FuelTypesContainer,
-  GasIcon,
-  LeafIcon,
   TransmissionContainer,
   TransmissionButton,
   TransmissionButtonText,
-  SubmitButton,
-  SubmitButtonText,
 } from './styles';
 import RangePicker from '../RangePicker';
+import ChooseFuelButton from './components/ChooseFuelButton';
 
-const Filter: React.FC = () => {
-  const [isGasFuel, setIsGasFuel] = useState(false);
-  const [isAlcoholFuel, setIsAlcoholFuel] = useState(false);
-  const [isEletricFuel, setIsEletricFuel] = useState(false);
+interface IProps extends ModalBaseProps {}
 
+const Filter: React.FC<IProps> = ({children, ...rest}) => {
   const [isAutomaticTransmission, setAutomaticTransmission] = useState(false);
   const [isManualTransmission, setManualTransmission] = useState(false);
 
   const [pricesPerDay, setPricesPerDay] = useState([120, 900]);
-
-  const handleGasFuel = useCallback(() => {
-    setIsGasFuel(true);
-
-    setIsAlcoholFuel(false);
-    setIsEletricFuel(false);
-  }, []);
-
-  const handleEletricFuel = useCallback(() => {
-    setIsEletricFuel(true);
-
-    setIsGasFuel(false);
-    setIsAlcoholFuel(false);
-  }, []);
-
-  const handleAlcoholFuel = useCallback(() => {
-    setIsAlcoholFuel(true);
-
-    setIsEletricFuel(false);
-    setIsGasFuel(false);
-  }, []);
 
   const handleAutomaticTransmission = useCallback(() => {
     setAutomaticTransmission(true);
@@ -66,7 +38,7 @@ const Filter: React.FC = () => {
   }, []);
 
   return (
-    <FilterModal animationType="slide" visible={true} transparent>
+    <FilterModal {...rest}>
       <ModalContainer>
         <TopDivider />
         <Section>
@@ -92,35 +64,8 @@ const Filter: React.FC = () => {
         />
 
         <ModalText>Combustível</ModalText>
-        <FuelTypesContainer>
-          <FuelButton
-            android_ripple={{color: '#AEAEB3'}}
-            onPress={() => {
-              handleGasFuel();
-            }}
-            isActive={isGasFuel}>
-            <GasIcon width={25} height={25} isActive={isGasFuel} />
-            <FuelButtonText isActive={isGasFuel}>Gasolina</FuelButtonText>
-          </FuelButton>
-          <FuelButton
-            android_ripple={{color: '#AEAEB3'}}
-            onPress={() => {
-              handleEletricFuel();
-            }}
-            isActive={isEletricFuel}>
-            <EnergyIcon width={25} height={25} isActive={isEletricFuel} />
-            <FuelButtonText isActive={isEletricFuel}>Elétrico</FuelButtonText>
-          </FuelButton>
-          <FuelButton
-            android_ripple={{color: '#AEAEB3'}}
-            onPress={() => {
-              handleAlcoholFuel();
-            }}
-            isActive={isAlcoholFuel}>
-            <LeafIcon width={25} height={25} isActive={isAlcoholFuel} />
-            <FuelButtonText isActive={isAlcoholFuel}>Álcool</FuelButtonText>
-          </FuelButton>
-        </FuelTypesContainer>
+        <ChooseFuelButton />
+
         <ModalText>Transmissão</ModalText>
         <TransmissionContainer>
           <TransmissionButton
@@ -140,9 +85,7 @@ const Filter: React.FC = () => {
             <TransmissionButtonText>Manual</TransmissionButtonText>
           </TransmissionButton>
         </TransmissionContainer>
-        <SubmitButton android_ripple={{color: '#fff'}}>
-          <SubmitButtonText>Confirmar</SubmitButtonText>
-        </SubmitButton>
+        {children}
       </ModalContainer>
     </FilterModal>
   );
