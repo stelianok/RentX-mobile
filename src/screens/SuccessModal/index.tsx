@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Alert, useWindowDimensions} from 'react-native';
+import {useWindowDimensions} from 'react-native';
 
 import {
   Container,

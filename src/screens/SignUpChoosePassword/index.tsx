@@ -1,5 +1,4 @@
 import React, {useCallback, useState} from 'react';
-import Icon from 'react-native-vector-icons/Feather';
 import {
   Container,
   Content,
@@ -15,7 +14,7 @@ import GoBackHeader from '../../components/GoBackHeader';
 
 import Password from '../../assets/icons/password.svg';
 
-import {KeyboardAvoidingView, Platform, StatusBar} from 'react-native';
+import {KeyboardAvoidingView, Platform} from 'react-native';
 import SuccessModal from '../SuccessModal';
 import PasswordInput from '../../components/PasswordInput';
 
