@@ -1,5 +1,5 @@
 import React, {useState, useCallback} from 'react';
-import {StatusBar} from 'react-native';
+import {StatusBar, View} from 'react-native';
 import CarCard from '../../components/CarCard';
 
 import {
@@ -94,6 +94,7 @@ const Home: React.FC = () => {
       <StatusBar backgroundColor={'#1b1b1f'} barStyle={'light-content'} />
       <Container>
         <Filter
+          statusBarTranslucent={false}
           animationType="slide"
           transparent={true}
           visible={isModalVisible}

@@ -5,7 +5,7 @@ import Filter from '../../assets/icons/filter.svg';
 
 export const Container = styled.View`
   flex: 1;
-  background-color: #ffffff;
+  background-color: #fff;
 `;
 
 export const ModalSubmitButton = styled.Pressable`
