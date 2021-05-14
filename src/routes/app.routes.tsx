@@ -9,6 +9,7 @@ import WelcomeScreen from '../screens/WelcomeScreen';
 import SignIn from '../screens/SignIn';
 import SignUpChooseNameAndEmail from '../screens/SignUpChooseNameAndEmail';
 import SignUpChoosePassword from '../screens/SignUpChoosePassword';
+import MainRoutes from './main.routes';
 
 const App = createStackNavigator();
 
@@ -34,6 +35,7 @@ const AppRoutes: React.FC = () => (
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}
     />
+    <App.Screen name="MainRoutes" component={MainRoutes} />
   </App.Navigator>
 );
 
