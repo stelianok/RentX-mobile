@@ -7,8 +7,12 @@ export const FilterModal = styled.Modal``;
 
 export const ModalContainer = styled.View`
   flex: 1;
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+`;
 
+export const ModalContent = styled.View`
+  flex: 1;
+  background-color: #fff;
   margin-top: 160px;
 
   padding: 30px;
