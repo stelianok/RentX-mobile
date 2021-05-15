@@ -29,6 +29,7 @@ interface Car {
   image: any;
   price: number;
   fuel_type?: 'eletric' | 'gas' | 'alcohol';
+  isDateEqualsToday: boolean;
 }
 const cars: Car[] = [
   {
@@ -37,12 +38,14 @@ const cars: Car[] = [
     image: Lambo,
     price: 580,
     fuel_type: 'eletric',
+    isDateEqualsToday: true,
   },
   {
     brand: 'AUDI',
     name: 'RS 5 Coupé',
     image: Audi,
     price: 470,
+    isDateEqualsToday: false,
   },
   {
     brand: 'PORCHE',
@@ -50,6 +53,7 @@ const cars: Car[] = [
     image: Porche,
     price: 235,
     fuel_type: 'gas',
+    isDateEqualsToday: false,
   },
   {
     brand: 'CHEVROLET',
@@ -57,6 +61,7 @@ const cars: Car[] = [
     image: Corvete,
     price: 943,
     fuel_type: 'gas',
+    isDateEqualsToday: false,
   },
   {
     brand: 'VOLVO',
@@ -64,6 +69,7 @@ const cars: Car[] = [
     image: Volvo,
     price: 260,
     fuel_type: 'alcohol',
+    isDateEqualsToday: false,
   },
   {
     brand: 'MITSUBISHI',
@@ -71,6 +77,7 @@ const cars: Car[] = [
     image: Lancer,
     price: 605,
     fuel_type: 'gas',
+    isDateEqualsToday: false,
   },
 ];
 
@@ -95,6 +102,7 @@ const ScheduleCars: React.FC = () => {
                 price={item.price}
                 fuel_type={item.fuel_type}
                 image={item.image}
+                isDateEqualsToday={item.isDateEqualsToday}
               />
             )}
           />
