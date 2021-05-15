@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useState, useCallback} from 'react';
 import {
   CarInfo,
   TextArea,
@@ -14,6 +14,8 @@ import {
   RowContainer,
   Container,
   Footer,
+  TodaySchedule,
+  TodayScheduleTitle,
   ScheduleTitle,
   ScheduleDateContainer,
   ScheduleDate,
@@ -26,6 +28,7 @@ interface IProps {
   image: any;
   price: number;
   fuel_type?: 'eletric' | 'gas' | 'alcohol';
+  isDateEqualsToday: boolean;
 }
 
 const CarCardLeanWithSchedule: React.FC<IProps> = ({
@@ -34,6 +37,7 @@ const CarCardLeanWithSchedule: React.FC<IProps> = ({
   image,
   price,
   fuel_type,
+  isDateEqualsToday,
 }) => {
   const ChooseIcon = useCallback(() => {
     if (fuel_type === 'eletric') {
@@ -66,13 +70,19 @@ const CarCardLeanWithSchedule: React.FC<IProps> = ({
           <CarImg source={image} resizeMode={'contain'} />
         </ImageContainer>
       </Container>
-      <Footer>
-        <ScheduleTitle>PERÍODO</ScheduleTitle>
-        <ScheduleDateContainer>
-          <ScheduleDate>18 Junho 2021</ScheduleDate>
-          <ArrowIcon width={24} height={24} />
-          <ScheduleDate>25 Junho 2021</ScheduleDate>
-        </ScheduleDateContainer>
+      <Footer isDateEqualsToday={isDateEqualsToday}>
+        {isDateEqualsToday ? (
+          <TodayScheduleTitle>Utilizando até 27 de maio</TodayScheduleTitle>
+        ) : (
+          <>
+            <ScheduleTitle>PERÍODO</ScheduleTitle>
+            <ScheduleDateContainer>
+              <ScheduleDate>18 Junho 2021</ScheduleDate>
+              <ArrowIcon width={24} height={24} />
+              <ScheduleDate>25 Junho 2021</ScheduleDate>
+            </ScheduleDateContainer>
+          </>
+        )}
       </Footer>
     </>
   );
