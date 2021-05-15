@@ -1,5 +1,6 @@
 import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import {Dimensions} from 'react-native';
 
 import HomeIcon from '../assets/icons/home.svg';
 import CarIcon from '../assets/icons/car.svg';
@@ -7,7 +8,8 @@ import CalendarIcon from '../assets/icons/calendar.svg';
 import UserIcon from '../assets/icons/user.svg';
 
 import Home from '../screens/Home';
-import {Dimensions} from 'react-native';
+import ListCars from '../screens/ListCars';
+import ScheduleCars from '../screens/ScheduleCars';
 
 const BottomTab = createMaterialTopTabNavigator();
 const width = Dimensions.get('window').width;
@@ -57,7 +59,7 @@ const MainRoutes: React.FC = () => {
       />
       <BottomTab.Screen
         name="List"
-        component={Home}
+        component={ListCars}
         options={{
           tabBarLabel: '•',
           tabBarIcon: ({color}) => (
@@ -67,7 +69,7 @@ const MainRoutes: React.FC = () => {
       />
       <BottomTab.Screen
         name="Schedule"
-        component={Home}
+        component={ScheduleCars}
         options={{
           tabBarLabel: '•',
           tabBarIcon: ({color}) => (
