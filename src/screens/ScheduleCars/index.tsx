@@ -2,17 +2,7 @@ import React from 'react';
 import {StatusBar} from 'react-native';
 import {FlatList} from 'react-native';
 
-import {
-  Container,
-  Header,
-  Title,
-  Subtitle,
-  Content,
-  SearchContainer,
-  SearchInput,
-  SearchIconContainer,
-  SearchIcon,
-} from './styles';
+import {Container, Header, Title, Subtitle, Content} from './styles';
 
 import Audi from '../../assets/images/Audi.png';
 import Corvete from '../../assets/images/Corvete.png';

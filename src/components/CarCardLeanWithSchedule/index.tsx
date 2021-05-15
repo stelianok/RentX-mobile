@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useCallback} from 'react';
 import {
   CarInfo,
   TextArea,
@@ -14,7 +14,6 @@ import {
   RowContainer,
   Container,
   Footer,
-  TodaySchedule,
   TodayScheduleTitle,
   ScheduleTitle,
   ScheduleDateContainer,
