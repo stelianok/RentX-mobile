@@ -1,7 +1,7 @@
 import React from 'react';
 import CarCard from '../../components/CarCard';
 
-import Lancer from '../../assets/images/Lancer.png';
+import Lambo from '../../assets/images/Lambo.png';
 import {
   Container,
   Header,
@@ -19,7 +19,9 @@ import {
   SectionTitle,
   SectionInfo,
   Divider,
+  FavoriteCarContainer,
 } from './styles';
+import CarCardLean from '../../components/CarCardLean';
 const Profile: React.FC = () => {
   return (
     <Container>
@@ -45,7 +47,7 @@ const Profile: React.FC = () => {
         </ProfileImageContainer>
       </Header>
       <Content>
-        <ProfileName>Zagreus</ProfileName>
+        <ProfileName>Zagreus Prince of the underworld</ProfileName>
         <ProfileInfo>
           <SectionContainer>
             <SectionTitle>Agendamentos Feitos</SectionTitle>
@@ -56,14 +58,16 @@ const Profile: React.FC = () => {
             <SectionTitle>Carro Favorito</SectionTitle>
             <SectionInfo>Utilizado 2 vezes</SectionInfo>
           </SectionContainer>
+          <FavoriteCarContainer>
+            <CarCardLean
+              name={'LAMBORGHINI'}
+              brand={'Hurracan'}
+              price={580}
+              fuel_type={'eletric'}
+              image={Lambo}
+            />
+          </FavoriteCarContainer>
         </ProfileInfo>
-        <CarCard
-          name={'Lancer EVO X'}
-          brand={'MITSUBISHI'}
-          price={605}
-          fuel_type={'gas'}
-          image={Lancer}
-        />
       </Content>
     </Container>
   );
