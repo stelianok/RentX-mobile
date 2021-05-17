@@ -105,5 +105,6 @@ export const FavoriteCarContainer = styled.View`
   flex: 1;
 
   margin-top: 25px;
+  margin-bottom: 35px;
   width: 100%;
 `;
