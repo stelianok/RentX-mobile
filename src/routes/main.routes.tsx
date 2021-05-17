@@ -37,10 +37,10 @@ const MainRoutes: React.FC = () => {
         },
         indicatorStyle: {
           backgroundColor: '#DC1637',
-          width: 33,
+          width: 40,
           marginBottom: 13,
           flex: 1,
-          left: '8.5%',
+          left: '8.7%',
           height: 2,
         },
       }}
