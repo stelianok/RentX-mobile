@@ -89,6 +89,7 @@ export const SectionTitle = styled.Text`
 export const SectionInfo = styled.Text`
   font-family: 'ArchivoNarrow-Medium';
   font-size: 18px;
+  color: #47474d;
 `;
 export const Divider = styled.View`
   width: 100%;
