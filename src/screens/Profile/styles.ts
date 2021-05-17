@@ -55,6 +55,7 @@ export const ProfileImage = styled.Image`
 `;
 export const Content = styled.View`
   margin: 20px;
+  margin-bottom: 0px;
   background-color: #fff;
   flex: 1;
 `;
@@ -72,7 +73,7 @@ export const ProfileInfo = styled.View`
 
   justify-content: center;
   align-items: center;
-  padding: 15px;
+  padding: 5px;
   margin-top: 60px;
 `;
 export const SectionContainer = styled.View`
@@ -101,8 +102,8 @@ export const Divider = styled.View`
 `;
 
 export const FavoriteCarContainer = styled.View`
-  margin-top: 30px;
   flex: 1;
 
+  margin-top: 25px;
   width: 100%;
 `;
