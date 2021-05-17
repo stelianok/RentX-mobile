@@ -10,6 +10,7 @@ import UserIcon from '../assets/icons/user.svg';
 import Home from '../screens/Home';
 import ListCars from '../screens/ListCars';
 import ScheduleCars from '../screens/ScheduleCars';
+import Profile from '../screens/Profile';
 
 const BottomTab = createMaterialTopTabNavigator();
 const width = Dimensions.get('window').width;
@@ -79,7 +80,7 @@ const MainRoutes: React.FC = () => {
       />
       <BottomTab.Screen
         name="Profile"
-        component={Home}
+        component={Profile}
         options={{
           tabBarLabel: '•',
           tabBarIcon: ({color}) => (
