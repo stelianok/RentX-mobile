@@ -24,24 +24,21 @@ const MainRoutes: React.FC = () => {
         inactiveTintColor: '#AEAEB3',
         showIcon: true,
         showLabel: false,
-
         iconStyle: {
           justifyContent: 'center',
           alignItems: 'center',
-
           marginBottom: 8,
         },
         style: {
           borderColor: '#EBEBF0',
           borderTopWidth: 2,
-        },
 
+          marginTop: -50,
+        },
         indicatorStyle: {
           backgroundColor: '#DC1637',
-
           width: 33,
           marginBottom: 13,
-
           flex: 1,
           left: '8.5%',
           height: 2,
