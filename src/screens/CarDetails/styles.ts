@@ -51,6 +51,8 @@ export const InactiveDot = styled.Text`
 
 export const Content = styled.View`
   flex: 1;
+
+  justify-content: space-around;
 `;
 export const CarImageContainer = styled.View`
   align-self: center;
@@ -58,7 +60,7 @@ export const CarImageContainer = styled.View`
   height: 140px;
 
   margin-top: 25px;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
 `;
 export const CarImage = styled.Image`
   flex: 1;
@@ -95,8 +97,6 @@ export const Specifications = styled.View`
   justify-content: space-between;
 
   width: 100%;
-
-  margin-top: 10px;
 `;
 export const Specification = styled.View`
   background-color: #f4f5f6;
@@ -131,13 +131,60 @@ export const SpecificationInfo = styled.Text`
   margin-top: 14px;
 `;
 
-export const ScheduleContainer = styled.View``;
+export const ScheduleContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 20px;
+`;
 export const DateContainer = styled.View``;
-export const DateInfo = styled.Text``;
+export const DateInfo = styled.Text`
+  font-family: 'Inter-Medium';
+  font-size: 15px;
+  color: #dc1637;
+
+  margin-top: 5px;
+`;
 export const ArrowRightIcon = styled(Arrow)``;
-export const Footer = styled.View``;
+export const Footer = styled.View`
+  background-color: #f4f5f6;
+  justify-content: flex-start;
+  width: 100%;
+
+  padding: 20px;
+`;
+
+export const RowContainer = styled.View`
+  flex-direction: row;
+
+  justify-content: space-between;
+  align-items: center;
+`;
 export const PriceContainer = styled.View``;
-export const DayValue = styled.Text``;
-export const TotalValue = styled.Text``;
-export const SubmitButton = styled(RectButton)``;
-export const SubmitButtonText = styled.Text``;
+export const DayValue = styled.Text`
+  font-family: 'Inter-Medium';
+  font-size: 15px;
+  color: #47474d;
+`;
+export const TotalValue = styled.Text`
+  font-family: 'ArchivoNarrow-Medium';
+  font-size: 24px;
+  text-align: right;
+  color: #41414d;
+`;
+export const SubmitButton = styled(RectButton)`
+  background-color: #dc1637;
+  width: 100%;
+
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 25px;
+  height: 55px;
+`;
+export const SubmitButtonText = styled.Text`
+  color: #fff;
+  font-family: 'Inter-Regular';
+  font-size: 18px;
+`;

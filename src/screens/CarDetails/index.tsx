@@ -29,6 +29,7 @@ import {
   DateInfo,
   ArrowRightIcon,
   Footer,
+  RowContainer,
   PriceContainer,
   DayValue,
   TotalValue,
@@ -107,18 +108,21 @@ const CarDetails: React.FC = () => {
               <DateInfo>20 Julho 2020</DateInfo>
             </DateContainer>
           </ScheduleContainer>
-          <Footer>
-            <PriceContainer>
-              <Title>TOTAL</Title>
-              <DayValue>R$ 580 x3 diárias</DayValue>
-            </PriceContainer>
-            <TotalValue>R$ 2,900</TotalValue>
-            <SubmitButton>
-              <SubmitButtonText>Alugar agora</SubmitButtonText>
-            </SubmitButton>
-          </Footer>
         </Content>
       </Container>
+      <Footer>
+        <RowContainer>
+          <PriceContainer>
+            <Title>TOTAL</Title>
+            <DayValue>R$ 580 x3 diárias</DayValue>
+          </PriceContainer>
+          <TotalValue>R$ 2,900</TotalValue>
+        </RowContainer>
+
+        <SubmitButton>
+          <SubmitButtonText>Alugar agora</SubmitButtonText>
+        </SubmitButton>
+      </Footer>
     </>
   );
 };
