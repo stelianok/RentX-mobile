@@ -16,7 +16,6 @@ import {
 
 import Cross from '../../assets/icons/cross.svg';
 import Union from '../../assets/icons/union.svg';
-import {useNavigation} from '@react-navigation/native';
 
 interface IProps {
   modalVisibility: boolean;
@@ -29,7 +28,6 @@ const QuitModal: React.FC<IProps> = ({
   subtitle,
 }) => {
   const width = useWindowDimensions().width;
-  const navigation = useNavigation();
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   useEffect(() => {
@@ -43,7 +41,7 @@ const QuitModal: React.FC<IProps> = ({
       statusBarTranslucent={true}
       visible={isModalVisible}
       onRequestClose={() => {
-        setIsModalVisible(!isModalVisible);
+        setIsModalVisible(false);
       }}>
       <Content>
         <UnionIconContainer>
