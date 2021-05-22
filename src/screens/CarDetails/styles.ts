@@ -173,7 +173,7 @@ export const TotalValue = styled.Text`
   text-align: right;
   color: #41414d;
 `;
-export const SubmitButton = styled(RectButton)`
+export const SubmitButton = styled.Pressable`
   background-color: #dc1637;
   width: 100%;
 

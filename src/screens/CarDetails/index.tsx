@@ -1,4 +1,6 @@
-import React from 'react';
+import {StatusBar} from 'react-native';
+import React, {useState, useCallback} from 'react';
+
 import {
   Container,
   Header,
@@ -38,13 +40,27 @@ import {
 } from './styles';
 
 import Lambo from '../../assets/images/Lambo.png';
-import {StatusBar} from 'react-native';
+import SuccessModal from '../SuccessModal';
 
 const CarDetails: React.FC = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const handleModalVisibility = useCallback(() => {
+    setIsModalVisible(true);
+  }, []);
+
   return (
     <>
       <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'} />
       <Container>
+        <SuccessModal
+          title={'Carro alugado!'}
+          subtitle={
+            'Agora você só precisa ir até a concessionária da RENTX pegar o seu automóvel.'
+          }
+          buttonText={'Ok'}
+          modalVisibility={isModalVisible}
+        />
         <Header>
           <BorderlessButton
             android_ripple={{color: '#AEAEB3', borderless: true}}>
@@ -119,7 +135,11 @@ const CarDetails: React.FC = () => {
           <TotalValue>R$ 2,900</TotalValue>
         </RowContainer>
 
-        <SubmitButton>
+        <SubmitButton
+          android_ripple={{color: '#fff'}}
+          onPress={() => {
+            handleModalVisibility();
+          }}>
           <SubmitButtonText>Alugar agora</SubmitButtonText>
         </SubmitButton>
       </Footer>
