@@ -152,6 +152,7 @@ const Home: React.FC = () => {
                 image={item.image}
               />
             )}
+            style={{marginBottom: 25}}
           />
         </Content>
       </Container>

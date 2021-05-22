@@ -105,6 +105,7 @@ const ListCars: React.FC = () => {
                 image={item.image}
               />
             )}
+            style={{marginBottom: 15}}
           />
         </Content>
       </Container>

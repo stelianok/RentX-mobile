@@ -95,6 +95,7 @@ const ScheduleCars: React.FC = () => {
                 isDateEqualsToday={item.isDateEqualsToday}
               />
             )}
+            style={{marginBottom: 25}}
           />
         </Content>
       </Container>
