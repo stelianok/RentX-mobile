@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useCallback} from 'react';
 import {StatusBar} from 'react-native';
 
 import Lambo from '../../assets/images/Lambo.png';
@@ -22,11 +22,22 @@ import {
   FavoriteCarContainer,
 } from './styles';
 import CarCardLean from '../../components/CarCardLean';
+import QuitModal from '../QuitModal';
 const Profile: React.FC = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const handleModalVisibility = useCallback(() => {
+    setIsModalVisible(!isModalVisible);
+  }, [isModalVisible]);
   return (
     <>
       <StatusBar backgroundColor={'#29292e'} />
       <Container>
+        <QuitModal
+          title={'Sair do RENTX'}
+          subtitle={'Tem certeza que quer faazer isso?'}
+          modalVisibility={isModalVisible}
+        />
         <Header>
           <NavigationBar>
             <BorderlessButton
@@ -35,6 +46,9 @@ const Profile: React.FC = () => {
             </BorderlessButton>
             <Title>Perfil</Title>
             <BorderlessButton
+              onPress={() => {
+                handleModalVisibility();
+              }}
               android_ripple={{color: '#AEAEB3', borderless: true}}>
               <PowerIcon name={'power'} size={24} color={'#AEAEB3'} />
             </BorderlessButton>
