@@ -11,7 +11,7 @@ const Input: React.FC<InputProps> = ({IconComponent, ...rest}) => {
     <Container>
       <InputContainer>
         <IconContainer>
-          <IconComponent width={28} height={28} />
+          <IconComponent width={28} height={28} style={{color: '#47474d'}} />
         </IconContainer>
         <InputText placeholderTextColor={'#AEAEB3'} {...rest} />
       </InputContainer>
