@@ -1,7 +1,8 @@
-import React, {ReactSVG, useCallback, useEffect, useState} from 'react';
+import React, {useCallback} from 'react';
+import {useNavigation} from '@react-navigation/native';
+
 import {
   Container,
-  SubmitButton,
   Header,
   TextArea,
   Subtitle,
@@ -27,6 +28,7 @@ interface IProps {
 }
 
 const CarCard: React.FC<IProps> = ({brand, name, image, price, fuel_type}) => {
+  const navigation = useNavigation();
   const ChooseIcon = useCallback(() => {
     if (fuel_type === 'eletric') {
       return <EnergyIcon width={25} height={25} />;
@@ -39,7 +41,11 @@ const CarCard: React.FC<IProps> = ({brand, name, image, price, fuel_type}) => {
   }, [fuel_type]);
 
   return (
-    <Container android_ripple={{color: '#aeaeb3'}}>
+    <Container
+      android_ripple={{color: '#aeaeb3'}}
+      onLongPress={() => {
+        navigation.navigate('CarDetails');
+      }}>
       <Header>
         <TextArea>
           <Subtitle>{brand}</Subtitle>
