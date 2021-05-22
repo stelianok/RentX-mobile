@@ -22,12 +22,14 @@ interface IProps {
   title: string;
   subtitle: string;
   buttonText: string;
+  screenName?: string;
 }
 const SuccessModal: React.FC<IProps> = ({
   modalVisibility = false,
   title,
   subtitle,
   buttonText,
+  screenName,
 }) => {
   const width = useWindowDimensions().width;
   const navigation = useNavigation();
@@ -60,7 +62,7 @@ const SuccessModal: React.FC<IProps> = ({
         <SubmitButton
           onPress={() => {
             setIsModalVisible(false);
-            navigation.navigate('SignIn');
+            screenName !== undefined && navigation.navigate(screenName);
           }}>
           <SubmitButtonText>{buttonText}</SubmitButtonText>
         </SubmitButton>
