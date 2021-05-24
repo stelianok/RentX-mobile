@@ -37,11 +37,9 @@ const MainRoutes: React.FC = () => {
         },
         indicatorStyle: {
           backgroundColor: '#DC1637',
-          width: 40,
+          width: width / 20,
           marginBottom: 13,
-          flex: 1,
-          left: '8.7%',
-          height: 2,
+          marginLeft: width / 10,
         },
       }}
       tabBarPosition={'bottom'}>
