@@ -50,17 +50,6 @@ export const ModalTitle = styled.Text`
   color: #47474d;
 `;
 
-export const CleanPreferencesButton = styled.TouchableOpacity`
-  justify-content: center;
-  align-items: center;
-`;
-
-export const CleanPreferencesText = styled.Text`
-  font-family: 'Inter-Regular';
-  font-size: 14px;
-  color: #aeaeb3;
-`;
-
 export const ModalDivider = styled.View`
   width: 100%;
   height: 2px;

@@ -1,11 +1,13 @@
 import React, {useState, useCallback} from 'react';
-import {StatusBar, View} from 'react-native';
+import {StatusBar} from 'react-native';
 import CarCard from '../../components/CarCard';
 
 import {
   Container,
   ModalSubmitButton,
   ModalSubmitButtonText,
+  CleanPreferencesButton,
+  CleanPreferencesText,
   Header,
   DateContainer,
   DateTitle,
@@ -100,15 +102,25 @@ const Home: React.FC = () => {
           visible={isModalVisible}
           onRequestClose={() => {
             setIsModalVisible(!isModalVisible);
-          }}>
-          <ModalSubmitButton
-            onPress={() => {
-              setIsModalVisible(!isModalVisible);
-            }}
-            android_ripple={{color: '#fff'}}>
-            <ModalSubmitButtonText>Confirmar</ModalSubmitButtonText>
-          </ModalSubmitButton>
-        </Filter>
+          }}
+          CleanPreferencesButton={() => (
+            <CleanPreferencesButton
+              onPress={() => {
+                setIsModalVisible(false);
+              }}>
+              <CleanPreferencesText>Limpar todos</CleanPreferencesText>
+            </CleanPreferencesButton>
+          )}
+          SubmitButton={() => (
+            <ModalSubmitButton
+              onPress={() => {
+                setIsModalVisible(!isModalVisible);
+              }}
+              android_ripple={{color: '#fff'}}>
+              <ModalSubmitButtonText>Confirmar</ModalSubmitButtonText>
+            </ModalSubmitButton>
+          )}
+        />
         <Header>
           <DateContainer>
             <DateTitle>De</DateTitle>

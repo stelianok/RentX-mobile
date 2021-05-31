@@ -24,6 +24,17 @@ export const ModalSubmitButtonText = styled.Text`
   font-size: 18px;
 `;
 
+export const CleanPreferencesButton = styled.TouchableOpacity`
+  justify-content: center;
+  align-items: center;
+`;
+
+export const CleanPreferencesText = styled.Text`
+  font-family: 'Inter-Regular';
+  font-size: 14px;
+  color: #aeaeb3;
+`;
+
 export const Header = styled.View`
   background-color: #1b1b1f;
 

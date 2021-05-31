@@ -7,8 +7,6 @@ import {
   ModalContent,
   ModalTitle,
   TopDivider,
-  CleanPreferencesButton,
-  CleanPreferencesText,
   Section,
   ModalText,
   ModalDivider,
@@ -20,9 +18,16 @@ import {
 import RangePicker from '../RangePicker';
 import ChooseFuelButton from './components/ChooseFuelButton';
 
-interface IProps extends ModalBaseProps, ModalPropsAndroid {}
+interface IProps extends ModalBaseProps, ModalPropsAndroid {
+  CleanPreferencesButton: any;
+  SubmitButton: any;
+}
 
-const Filter: React.FC<IProps> = ({children, ...rest}) => {
+const Filter: React.FC<IProps> = ({
+  CleanPreferencesButton,
+  SubmitButton,
+  ...rest
+}) => {
   const [isAutomaticTransmission, setAutomaticTransmission] = useState(false);
   const [isManualTransmission, setManualTransmission] = useState(false);
 
@@ -45,9 +50,7 @@ const Filter: React.FC<IProps> = ({children, ...rest}) => {
           <TopDivider />
           <Section>
             <ModalTitle>Filtro</ModalTitle>
-            <CleanPreferencesButton>
-              <CleanPreferencesText>Limpar todos</CleanPreferencesText>
-            </CleanPreferencesButton>
+            {CleanPreferencesButton()}
           </Section>
           <ModalDivider />
           <Section>
@@ -87,7 +90,7 @@ const Filter: React.FC<IProps> = ({children, ...rest}) => {
               <TransmissionButtonText>Manual</TransmissionButtonText>
             </TransmissionButton>
           </TransmissionContainer>
-          {children}
+          {SubmitButton()}
         </ModalContent>
       </ModalContainer>
     </FilterModal>
