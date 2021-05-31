@@ -1,6 +1,7 @@
 import React from 'react';
 import {StatusBar} from 'react-native';
 import {Text} from 'react-native-svg';
+import {Calendar} from '../../components/Calendar';
 import {
   Container,
   Header,
@@ -48,7 +49,7 @@ const ChooseDate: React.FC = () => {
           </DatesContainer>
         </Header>
         <CalendarContainer>
-          <Text>YEET</Text>
+          <Calendar />
         </CalendarContainer>
         <Footer>
           <SubmitButton enabled={false}>
