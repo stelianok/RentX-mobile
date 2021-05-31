@@ -1,6 +1,5 @@
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Feather';
-import {RectButton} from 'react-native-gesture-handler';
 
 import Speed from '../../assets/icons/speed.svg';
 import Strenght from '../../assets/icons/strenght.svg';
@@ -98,21 +97,7 @@ export const Specifications = styled.View`
 
   width: 100%;
 `;
-export const Specification = styled.View`
-  background-color: #f4f5f6;
 
-  justify-content: center;
-  align-items: center;
-
-  margin-top: 15px;
-  padding: 20px;
-
-  width: 115px;
-  height: 115px;
-
-  border-bottom-width: 2px;
-  border-color: #ebebf0;
-`;
 export const SpeedIcon = styled(Speed)``;
 export const UpIcon = styled(Up)``;
 export const StrenghtIcon = styled(Strenght)``;
@@ -122,13 +107,6 @@ export const FuelIcon = styled(Gas)`
 export const GearIcon = styled(Gear)``;
 export const UserIcon = styled(User)`
   color: #47474d;
-`;
-export const SpecificationInfo = styled.Text`
-  font-family: 'Inter-Regular';
-  font-size: 13px;
-  color: #7a7a80;
-
-  margin-top: 14px;
 `;
 
 export const ScheduleContainer = styled.View`

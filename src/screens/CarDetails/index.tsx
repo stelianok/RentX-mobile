@@ -18,9 +18,7 @@ import {
   Title,
   Info,
   Specifications,
-  Specification,
   SpeedIcon,
-  SpecificationInfo,
   UpIcon,
   StrenghtIcon,
   FuelIcon,
@@ -41,6 +39,7 @@ import {
 
 import Lambo from '../../assets/images/Lambo.png';
 import SuccessModal from '../SuccessModal';
+import Specification from '../../components/Specification';
 
 const CarDetails: React.FC = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -88,30 +87,30 @@ const CarDetails: React.FC = () => {
             </CarInfo>
           </CarBasicInfoContainer>
           <Specifications>
-            <Specification>
-              <SpeedIcon width={38} height={38} />
-              <SpecificationInfo>380km/h</SpecificationInfo>
-            </Specification>
-            <Specification>
-              <UpIcon width={38} height={38} />
-              <SpecificationInfo>3.2s</SpecificationInfo>
-            </Specification>
-            <Specification>
-              <StrenghtIcon width={38} height={38} />
-              <SpecificationInfo>800 HP</SpecificationInfo>
-            </Specification>
-            <Specification>
-              <FuelIcon width={38} height={38} />
-              <SpecificationInfo>Gasolina</SpecificationInfo>
-            </Specification>
-            <Specification>
-              <GearIcon width={38} height={38} />
-              <SpecificationInfo>Auto</SpecificationInfo>
-            </Specification>
-            <Specification>
-              <UserIcon width={38} height={38} />
-              <SpecificationInfo>2 pessoas</SpecificationInfo>
-            </Specification>
+            <Specification
+              title={'380km/h'}
+              Icon={() => <SpeedIcon width={38} height={38} />}
+            />
+            <Specification
+              title={'3.2s'}
+              Icon={() => <UpIcon width={38} height={38} />}
+            />
+            <Specification
+              title={'800 HP'}
+              Icon={() => <StrenghtIcon width={38} height={38} />}
+            />
+            <Specification
+              title={'Gasolina'}
+              Icon={() => <FuelIcon width={38} height={38} />}
+            />
+            <Specification
+              title={'Auto'}
+              Icon={() => <GearIcon width={38} height={38} />}
+            />
+            <Specification
+              title={'2 pessoas'}
+              Icon={() => <UserIcon width={38} height={38} />}
+            />
           </Specifications>
           <ScheduleContainer>
             <DateContainer>
