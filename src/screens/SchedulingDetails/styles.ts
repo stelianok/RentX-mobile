@@ -59,7 +59,7 @@ export const Content = styled.View`
 export const CarImageContainer = styled.View`
   align-self: center;
 
-  height: 140px;
+  height: 125px;
 
   margin-top: 25px;
   margin-bottom: 10px;
@@ -96,8 +96,7 @@ export const DailyPrice = styled.Text`
 export const Specifications = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
-
+  justify-content: space-around;
   width: 100%;
 `;
 
@@ -119,6 +118,8 @@ export const CalendarIcon = styled(Calendar)`
 export const ScheduleButton = styled(RectButton)`
   background-color: #dc1637;
 
+  justify-content: center;
+  align-items: center;
   padding: 14px;
 `;
 
@@ -128,6 +129,9 @@ export const ScheduleContainer = styled.View`
   align-items: center;
 
   margin-top: 20px;
+
+  margin-left: 5px;
+  margin-right: 5px;
 `;
 
 export const DateContainer = styled.View``;
@@ -157,6 +161,9 @@ export const RowContainer = styled.View`
   align-items: center;
 
   margin-top: 20px;
+
+  margin-left: 5px;
+  margin-right: 5px;
 `;
 
 export const PriceContainer = styled.View``;
@@ -172,6 +179,18 @@ export const TotalValue = styled.Text`
   text-align: right;
   color: #03b252;
 `;
+
+export const Divider = styled.View`
+  width: 98%;
+  height: 1px;
+
+  background-color: #ebebf0;
+
+  align-self: center;
+
+  margin-top: 25px;
+`;
+
 export const SubmitButton = styled.Pressable`
   background-color: #03b252;
   width: 100%;

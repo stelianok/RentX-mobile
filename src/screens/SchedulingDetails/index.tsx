@@ -37,11 +37,13 @@ import {
   PriceContainer,
   DayValue,
   TotalValue,
+  Divider,
   SubmitButton,
   SubmitButtonText,
 } from './styles';
 
 import Lambo from '../../assets/images/Lambo.png';
+
 // import SuccessModal from '../SuccessModal';
 
 const SchedulingDetails: React.FC = () => {
@@ -84,27 +86,27 @@ const SchedulingDetails: React.FC = () => {
           <Specifications>
             <Specification
               title={'380km/h'}
-              Icon={() => <SpeedIcon width={38} height={38} />}
+              Icon={() => <SpeedIcon width={30} height={30} />}
             />
             <Specification
               title={'3.2s'}
-              Icon={() => <UpIcon width={38} height={38} />}
+              Icon={() => <UpIcon width={30} height={30} />}
             />
             <Specification
               title={'800 HP'}
-              Icon={() => <StrenghtIcon width={38} height={38} />}
+              Icon={() => <StrenghtIcon width={30} height={30} />}
             />
             <Specification
               title={'Gasolina'}
-              Icon={() => <FuelIcon width={38} height={38} />}
+              Icon={() => <FuelIcon width={30} height={30} />}
             />
             <Specification
               title={'Auto'}
-              Icon={() => <GearIcon width={38} height={38} />}
+              Icon={() => <GearIcon width={30} height={30} />}
             />
             <Specification
               title={'2 pessoas'}
-              Icon={() => <UserIcon width={38} height={38} />}
+              Icon={() => <UserIcon width={30} height={30} />}
             />
           </Specifications>
           <ScheduleContainer>
@@ -121,6 +123,7 @@ const SchedulingDetails: React.FC = () => {
               <DateInfo>20/06/2021</DateInfo>
             </DateContainer>
           </ScheduleContainer>
+          <Divider />
           <RowContainer>
             <PriceContainer>
               <Title>TOTAL</Title>
