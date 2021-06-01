@@ -11,10 +11,12 @@ import Home from '../screens/Home';
 import ListCars from '../screens/ListCars';
 import ScheduleCars from '../screens/ScheduleCars';
 import Profile from '../screens/Profile';
+import {useRoute} from '@react-navigation/core';
 
 const BottomTab = createMaterialTopTabNavigator();
 const width = Dimensions.get('window').width;
 const MainRoutes: React.FC = () => {
+  const route = useRoute();
   return (
     <BottomTab.Navigator
       initialLayout={{width: width}}
@@ -52,6 +54,7 @@ const MainRoutes: React.FC = () => {
             <HomeIcon width={24} height={24} style={{color: color}} />
           ),
         }}
+        initialParams={route.params}
       />
       <BottomTab.Screen
         name="List"
