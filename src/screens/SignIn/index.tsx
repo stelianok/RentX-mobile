@@ -1,5 +1,4 @@
-import React, {useState, useCallback} from 'react';
-import Icon from 'react-native-vector-icons/Feather';
+import React, {useState} from 'react';
 import {
   Container,
   Content,
@@ -67,7 +66,7 @@ const SignIn: React.FC = () => {
                 </ForgotPasswordButton>
                 <LoginButton
                   onPress={() => {
-                    navigation.navigate('MainRoutes');
+                    navigation.navigate('ChooseDate');
                   }}>
                   <LoginButtonText>Login</LoginButtonText>
                 </LoginButton>

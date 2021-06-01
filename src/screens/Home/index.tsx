@@ -1,5 +1,6 @@
 import React, {useState, useCallback} from 'react';
 import {StatusBar} from 'react-native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import CarCard from '../../components/CarCard';
 
 import {
@@ -84,11 +85,20 @@ const cars: Car[] = [
   },
 ];
 
-const Home: React.FC = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+interface Params {
+  startDate: Date;
+  endDate: Date;
+}
 
+const Home: React.FC = () => {
+  const navigation = useNavigation();
+  const route = useRoute();
+
+  const {startDate, endDate} = route.params as Params;
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const handleModalVisibility = useCallback(() => {
     setIsModalVisible(!isModalVisible);
+    console.warn(route.params);
   }, [isModalVisible]);
 
   return (
@@ -124,14 +134,14 @@ const Home: React.FC = () => {
         <Header>
           <DateContainer>
             <DateTitle>De</DateTitle>
-            <DateText>16 julho 2020</DateText>
+            <DateText>{startDate}</DateText>
           </DateContainer>
           <IconContainer>
             <Chevron name={'chevron-down'} size={20} color={'#7A7A80'} />
           </IconContainer>
           <DateContainer>
             <DateTitle>Até</DateTitle>
-            <DateText>20 julho 2020</DateText>
+            <DateText>{endDate}</DateText>
           </DateContainer>
         </Header>
         <Content>
