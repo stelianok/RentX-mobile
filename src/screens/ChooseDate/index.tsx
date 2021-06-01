@@ -1,6 +1,7 @@
+import {useNavigation} from '@react-navigation/native';
 import {addDays, format} from 'date-fns';
 import React, {useState, useCallback} from 'react';
-import {StatusBar} from 'react-native';
+import {Alert, StatusBar} from 'react-native';
 import Calendar, {DayProps, MarkedDateProps} from '../../components/Calendar';
 import {generateInterval} from '../../components/Calendar/generateInterval';
 
@@ -20,13 +21,12 @@ import {
 } from './styles';
 
 interface RentalPeriod {
-  start: number;
   startFormatted: string;
-  end: number;
   endFormatted: string;
 }
 
 const ChooseDate: React.FC = () => {
+  const navigator = useNavigation();
   const [lastSelectedDate, setLastSelectedDate] = useState<DayProps>(
     {} as DayProps,
   );
@@ -38,6 +38,16 @@ const ChooseDate: React.FC = () => {
     {} as RentalPeriod,
   );
 
+  const handleConfirmRental = useCallback(() => {
+    if (!rentalPeriod.startFormatted || !rentalPeriod.endFormatted) {
+      Alert.alert('selecione o intervalo para alugar');
+    } else {
+      navigator.navigate('MainRoutes', {
+        startDate: rentalPeriod.startFormatted,
+        endDate: rentalPeriod.endFormatted,
+      });
+    }
+  }, [navigator, rentalPeriod.endFormatted, rentalPeriod.startFormatted]);
   const handleChangeDate = useCallback(
     (date: DayProps) => {
       let start = !lastSelectedDate.timestamp ? date : lastSelectedDate;
@@ -99,7 +109,10 @@ const ChooseDate: React.FC = () => {
           <Calendar markedDates={markedDates} onDayPress={handleChangeDate} />
         </CalendarContainer>
         <Footer>
-          <SubmitButton>
+          <SubmitButton
+            onPress={() => {
+              handleConfirmRental();
+            }}>
             <SubmitButtonText>Confirmar</SubmitButtonText>
           </SubmitButton>
         </Footer>
