@@ -11,6 +11,7 @@ import SignUpChooseNameAndEmail from '../screens/SignUpChooseNameAndEmail';
 import SignUpChoosePassword from '../screens/SignUpChoosePassword';
 import MainRoutes from './main.routes';
 import CarDetails from '../screens/CarDetails';
+import ChooseDate from '../screens/ChooseDate';
 
 const App = createStackNavigator();
 
@@ -37,6 +38,7 @@ const AppRoutes: React.FC = () => (
       }}
     />
     <App.Screen name="CarDetails" component={CarDetails} />
+    <App.Screen name="ChooseDate" component={ChooseDate} />
     <App.Screen name="MainRoutes" component={MainRoutes} />
   </App.Navigator>
 );
