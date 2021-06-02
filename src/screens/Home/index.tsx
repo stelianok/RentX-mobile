@@ -10,12 +10,12 @@ import {
   CleanPreferencesButton,
   CleanPreferencesText,
   Header,
+  GoToScheduleButton,
   DateContainer,
   DateTitle,
   DateText,
   Content,
   ResultContainer,
-  IconContainer,
   Chevron,
   ResultTitle,
   RowContainer,
@@ -91,7 +91,7 @@ interface Params {
 }
 
 const Home: React.FC = () => {
-  const navigation = useNavigation();
+  const navigator = useNavigation();
   const route = useRoute();
 
   const {startDate, endDate} = route.params as Params;
@@ -99,7 +99,7 @@ const Home: React.FC = () => {
   const handleModalVisibility = useCallback(() => {
     setIsModalVisible(!isModalVisible);
     console.warn(route.params);
-  }, [isModalVisible]);
+  }, [isModalVisible, route.params]);
 
   return (
     <>
@@ -136,9 +136,14 @@ const Home: React.FC = () => {
             <DateTitle>De</DateTitle>
             <DateText>{startDate}</DateText>
           </DateContainer>
-          <IconContainer>
-            <Chevron name={'chevron-down'} size={20} color={'#7A7A80'} />
-          </IconContainer>
+          <GoToScheduleButton
+            android_ripple={{borderless: true, radius: 15, color: '#7A7A80'}}
+            onPress={() => {
+              navigator.navigate('ChooseDate');
+            }}>
+            <Chevron name={'chevron-down'} size={28} color={'#7A7A80'} />
+          </GoToScheduleButton>
+
           <DateContainer>
             <DateTitle>Até</DateTitle>
             <DateText>{endDate}</DateText>

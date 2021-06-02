@@ -34,6 +34,12 @@ export const CleanPreferencesText = styled.Text`
   font-size: 14px;
   color: #aeaeb3;
 `;
+export const GoToScheduleButton = styled.Pressable`
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 15px;
+`;
 
 export const Header = styled.View`
   background-color: #1b1b1f;
@@ -48,16 +54,6 @@ export const Header = styled.View`
 `;
 
 export const DateContainer = styled.View``;
-
-export const IconContainer = styled.View`
-  flex: 1;
-
-  height: 100%;
-  flex-direction: row;
-
-  justify-content: center;
-  align-items: flex-end;
-`;
 
 export const Chevron = styled(Icon)``;
 
