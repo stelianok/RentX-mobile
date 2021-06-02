@@ -11,15 +11,13 @@ import {
   ImageContainer,
   Footer,
   CarImg,
-  EnergyIcon,
-  LeafIcon,
-  GasIcon,
   Pagination,
   Dot,
   InactiveDot,
 } from './styles';
+import FuelIcon from '../FuelIcon';
 
-interface IProps {
+interface ICarProps {
   brand: string;
   name: string;
   image: any;
@@ -27,24 +25,30 @@ interface IProps {
   fuel_type?: 'eletric' | 'gas' | 'alcohol';
 }
 
-const CarCard: React.FC<IProps> = ({brand, name, image, price, fuel_type}) => {
+const CarCard: React.FC<ICarProps> = ({
+  brand,
+  name,
+  image,
+  price,
+  fuel_type,
+}) => {
   const navigation = useNavigation();
-  const ChooseIcon = useCallback(() => {
-    if (fuel_type === 'eletric') {
-      return <EnergyIcon width={25} height={25} />;
-    }
-    if (fuel_type === 'alcohol') {
-      return <LeafIcon width={25} height={25} />;
-    }
 
-    return <GasIcon width={25} height={25} />;
-  }, [fuel_type]);
+  const car: ICarProps = {
+    brand,
+    name,
+    image,
+    price,
+    fuel_type,
+  };
 
   return (
     <Container
       android_ripple={{color: '#aeaeb3'}}
       onLongPress={() => {
-        navigation.navigate('CarDetails');
+        navigation.navigate('SchedulingDetails', {
+          car,
+        });
       }}>
       <Header>
         <TextArea>
@@ -60,7 +64,7 @@ const CarCard: React.FC<IProps> = ({brand, name, image, price, fuel_type}) => {
         <CarImg source={image} resizeMode={'contain'} />
       </ImageContainer>
       <Footer>
-        {ChooseIcon()}
+        <FuelIcon name={fuel_type} size={24} />
         <Pagination>
           <Dot>•</Dot>
           <InactiveDot>•</InactiveDot>

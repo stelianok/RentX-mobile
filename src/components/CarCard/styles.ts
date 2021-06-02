@@ -1,10 +1,6 @@
 import {Image} from 'react-native';
 import styled from 'styled-components/native';
 
-import Energy from '../../assets/icons/energy.svg';
-import Leaf from '../../assets/icons/leaf.svg';
-import Gas from '../../assets/icons/gas.svg';
-
 export const Container = styled.Pressable`
   flex: 1;
 
@@ -62,18 +58,6 @@ export const Footer = styled.View`
 
   justify-content: space-between;
   align-items: flex-start;
-`;
-
-export const EnergyIcon = styled(Energy)`
-  color: #aeaeb3;
-`;
-
-export const LeafIcon = styled(Leaf)`
-  color: #aeaeb3;
-`;
-
-export const GasIcon = styled(Gas)`
-  color: #aeaeb3;
 `;
 
 export const Pagination = styled.View`
