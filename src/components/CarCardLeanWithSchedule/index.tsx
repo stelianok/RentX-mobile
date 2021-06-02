@@ -1,4 +1,5 @@
 import React, {useCallback} from 'react';
+import FuelIcon from '../FuelIcon';
 import {
   CarInfo,
   TextArea,
@@ -8,9 +9,6 @@ import {
   ImageContainer,
   IconContainer,
   CarImg,
-  EnergyIcon,
-  LeafIcon,
-  GasIcon,
   RowContainer,
   Container,
   Footer,
@@ -38,17 +36,6 @@ const CarCardLeanWithSchedule: React.FC<IProps> = ({
   fuel_type,
   isDateEqualsToday,
 }) => {
-  const ChooseIcon = useCallback(() => {
-    if (fuel_type === 'eletric') {
-      return <EnergyIcon width={25} height={25} />;
-    }
-    if (fuel_type === 'alcohol') {
-      return <LeafIcon width={25} height={25} />;
-    }
-
-    return <GasIcon width={25} height={25} />;
-  }, [fuel_type]);
-
   return (
     <>
       <Container android_ripple={{color: '#aeaeb3'}}>
@@ -62,7 +49,9 @@ const CarCardLeanWithSchedule: React.FC<IProps> = ({
               <Subtitle>AO DIA</Subtitle>
               <Price>R$ {price}</Price>
             </TextArea>
-            <IconContainer>{ChooseIcon()}</IconContainer>
+            <IconContainer>
+              <FuelIcon name={fuel_type} size={24} />
+            </IconContainer>
           </RowContainer>
         </CarInfo>
         <ImageContainer>
