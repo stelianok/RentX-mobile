@@ -2,11 +2,15 @@ import {useNavigation} from '@react-navigation/native';
 import {addDays, format} from 'date-fns';
 import React, {useState, useCallback} from 'react';
 import {Alert, StatusBar} from 'react-native';
+import Icon from 'react-native-vector-icons/Feather';
+
 import Calendar, {DayProps, MarkedDateProps} from '../../components/Calendar';
 import {generateInterval} from '../../components/Calendar/generateInterval';
 
 import {
   Container,
+  TopBar,
+  GoBackButton,
   Header,
   Title,
   ArrowRightIcon,
@@ -21,6 +25,8 @@ import {
 } from './styles';
 
 interface RentalPeriod {
+  start: number;
+  end: number;
   startFormatted: string;
   endFormatted: string;
 }
@@ -38,6 +44,10 @@ const ChooseDate: React.FC = () => {
     {} as RentalPeriod,
   );
 
+  const handleGoBack = useCallback(() => {
+    navigator.goBack();
+  }, [navigator]);
+
   const handleConfirmRental = useCallback(() => {
     if (!rentalPeriod.startFormatted || !rentalPeriod.endFormatted) {
       Alert.alert('selecione o intervalo para alugar');
@@ -48,6 +58,7 @@ const ChooseDate: React.FC = () => {
       });
     }
   }, [navigator, rentalPeriod.endFormatted, rentalPeriod.startFormatted]);
+
   const handleChangeDate = useCallback(
     (date: DayProps) => {
       let start = !lastSelectedDate.timestamp ? date : lastSelectedDate;
@@ -80,6 +91,15 @@ const ChooseDate: React.FC = () => {
       <StatusBar backgroundColor={'#29292e'} barStyle={'light-content'} />
       <Container>
         <Header>
+          <TopBar>
+            <GoBackButton
+              android_ripple={{borderless: true, radius: 15, color: '#7A7A80'}}
+              onPress={() => {
+                handleGoBack();
+              }}>
+              <Icon name={'chevron-left'} size={24} color={'#fff'} />
+            </GoBackButton>
+          </TopBar>
           <Title>Escolha a data e encontre um carro.</Title>
           <DatesContainer>
             <DatesContainer>

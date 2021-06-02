@@ -8,6 +8,17 @@ export const Container = styled.View`
   background-color: #fff;
 `;
 
+export const TopBar = styled.View`
+  flex-direction: row;
+  justify-content: flex-start;
+
+  margin-bottom: 15px;
+`;
+export const GoBackButton = styled.Pressable`
+  justify-content: center;
+  align-items: center;
+`;
+
 export const Header = styled.View`
   background-color: #29292e;
   padding: 20px;
