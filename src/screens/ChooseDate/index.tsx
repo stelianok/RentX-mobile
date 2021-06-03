@@ -1,11 +1,12 @@
-import {useNavigation} from '@react-navigation/native';
-import {addDays, format} from 'date-fns';
+import {useNavigation, useRoute} from '@react-navigation/native';
+import {addDays, format, differenceInDays} from 'date-fns';
 import React, {useState, useCallback} from 'react';
 import {Alert, StatusBar} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 import Calendar, {DayProps, MarkedDateProps} from '../../components/Calendar';
 import {generateInterval} from '../../components/Calendar/generateInterval';
+import {ICar} from '../../dtos/car';
 
 import {
   Container,
@@ -31,8 +32,15 @@ interface RentalPeriod {
   endFormatted: string;
 }
 
+interface IRouteParams {
+  previousRouteName: string;
+  car?: ICar;
+}
+
 const ChooseDate: React.FC = () => {
   const navigator = useNavigation();
+  const {previousRouteName, car} = useRoute().params as IRouteParams;
+
   const [lastSelectedDate, setLastSelectedDate] = useState<DayProps>(
     {} as DayProps,
   );
@@ -52,12 +60,36 @@ const ChooseDate: React.FC = () => {
     if (!rentalPeriod.startFormatted || !rentalPeriod.endFormatted) {
       Alert.alert('selecione o intervalo para alugar');
     } else {
-      navigator.navigate('MainRoutes', {
-        startDate: rentalPeriod.startFormatted,
-        endDate: rentalPeriod.endFormatted,
-      });
+      if (previousRouteName !== 'SchedulingDetails') {
+        navigator.navigate('MainRoutes', {
+          startDate: rentalPeriod.startFormatted,
+          endDate: rentalPeriod.endFormatted,
+          numberOfDays:
+            differenceInDays(rentalPeriod.end, rentalPeriod.start) + 1,
+        });
+      } else {
+        navigator.navigate('SchedulingDetails', {
+          car: {
+            ...car,
+            schedule: {
+              startDate: rentalPeriod.startFormatted,
+              endDate: rentalPeriod.endFormatted,
+              numberOfDays:
+                differenceInDays(rentalPeriod.end, rentalPeriod.start) + 1,
+            },
+          },
+        });
+      }
     }
-  }, [navigator, rentalPeriod.endFormatted, rentalPeriod.startFormatted]);
+  }, [
+    car,
+    navigator,
+    previousRouteName,
+    rentalPeriod.end,
+    rentalPeriod.endFormatted,
+    rentalPeriod.start,
+    rentalPeriod.startFormatted,
+  ]);
 
   const handleChangeDate = useCallback(
     (date: DayProps) => {

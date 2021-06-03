@@ -1,5 +1,5 @@
 import {StatusBar} from 'react-native';
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback, useMemo} from 'react';
 import {useNavigation, useRoute} from '@react-navigation/native';
 
 import Specification from '../../components/Specification';
@@ -45,20 +45,14 @@ import {
 } from './styles';
 
 import SuccessModal from '../SuccessModal';
-
-interface ICar {
-  brand: string;
-  name: string;
-  image: any;
-  price: number;
-  fuel_type?: 'eletric' | 'gas' | 'alcohol';
-}
+import {ICar} from '../../dtos/car';
 
 const SchedulingDetails: React.FC = () => {
   const navigator = useNavigation();
   const route = useRoute();
 
-  const {brand, name, image, price, fuel_type} = route.params.car as ICar;
+  const {brand, name, image, price, fuel_type, schedule} = route.params
+    .car as ICar;
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -75,6 +69,11 @@ const SchedulingDetails: React.FC = () => {
     }
     return 'Gasolina';
   }, [fuel_type]);
+
+  const totalPrice = useMemo(() => {
+    return Number(price * schedule.numberOfDays).toPrecision(6);
+  }, [price, schedule.numberOfDays]);
+
   return (
     <>
       <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'} />
@@ -145,26 +144,34 @@ const SchedulingDetails: React.FC = () => {
             />
           </Specifications>
           <ScheduleContainer>
-            <ScheduleButton>
+            <ScheduleButton
+              onPress={() => {
+                navigator.navigate('ChooseDate', {
+                  previousRouteName: route.name,
+                  car: route.params.car,
+                });
+              }}>
               <CalendarIcon width={30} height={30} />
             </ScheduleButton>
             <DateContainer>
               <Title>DE</Title>
-              <DateInfo>18/06/2021</DateInfo>
+              <DateInfo>{schedule.startDate}</DateInfo>
             </DateContainer>
             <Icon name={'chevron-right'} color={'#AEAEB3'} size={24} />
             <DateContainer>
               <Title>ATÉ</Title>
-              <DateInfo>20/06/2021</DateInfo>
+              <DateInfo>{schedule.endDate}</DateInfo>
             </DateContainer>
           </ScheduleContainer>
           <Divider />
           <RowContainer>
             <PriceContainer>
               <Title>TOTAL</Title>
-              <DayValue>R$ 580 x3 diárias</DayValue>
+              <DayValue>
+                R$ {price} x{schedule.numberOfDays} diárias
+              </DayValue>
             </PriceContainer>
-            <TotalValue>R$ 2,900</TotalValue>
+            <TotalValue>R$ {totalPrice}</TotalValue>
           </RowContainer>
         </Content>
       </Container>
