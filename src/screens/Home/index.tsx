@@ -88,13 +88,14 @@ const cars: Car[] = [
 interface Params {
   startDate: Date;
   endDate: Date;
+  numberOfDays: number;
 }
 
 const Home: React.FC = () => {
   const navigator = useNavigation();
   const route = useRoute();
 
-  const {startDate, endDate} = route.params as Params;
+  const {startDate, endDate, numberOfDays} = route.params as Params;
   const [isModalVisible, setIsModalVisible] = useState(false);
   const handleModalVisibility = useCallback(() => {
     setIsModalVisible(!isModalVisible);
@@ -177,6 +178,11 @@ const Home: React.FC = () => {
                 price={item.price}
                 fuel_type={item.fuel_type}
                 image={item.image}
+                schedule={{
+                  startDate,
+                  endDate,
+                  numberOfDays,
+                }}
               />
             )}
             style={{marginBottom: 25}}
