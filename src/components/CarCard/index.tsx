@@ -23,14 +23,21 @@ interface ICarProps {
   image: any;
   price: number;
   fuel_type?: 'eletric' | 'gas' | 'alcohol';
+  schedule: Schedule;
 }
 
+interface Schedule {
+  startDate: Date;
+  endDate: Date;
+  numberOfDays: number;
+}
 const CarCard: React.FC<ICarProps> = ({
   brand,
   name,
   image,
   price,
   fuel_type,
+  schedule,
 }) => {
   const navigation = useNavigation();
 
@@ -40,6 +47,7 @@ const CarCard: React.FC<ICarProps> = ({
     image,
     price,
     fuel_type,
+    schedule,
   };
 
   return (
