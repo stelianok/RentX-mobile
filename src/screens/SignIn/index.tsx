@@ -20,13 +20,14 @@ import GoBackHeader from '../../components/GoBackHeader';
 
 import Input from '../../components/Input';
 import PasswordInput from '../../components/PasswordInput';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const navigation = useNavigation();
+  const route = useRoute();
   return (
     <>
       <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'} />
@@ -66,7 +67,9 @@ const SignIn: React.FC = () => {
                 </ForgotPasswordButton>
                 <LoginButton
                   onPress={() => {
-                    navigation.navigate('ChooseDate');
+                    navigation.navigate('ChooseDate', {
+                      previousRouteName: route.name,
+                    });
                   }}>
                   <LoginButtonText>Login</LoginButtonText>
                 </LoginButton>
