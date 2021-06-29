@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 
 import {
@@ -53,7 +53,7 @@ const CarCard: React.FC<ICarProps> = ({
   return (
     <Container
       android_ripple={{color: '#aeaeb3'}}
-      onLongPress={() => {
+      onPress={() => {
         navigation.navigate('SchedulingDetails', {
           car,
         });
