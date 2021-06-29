@@ -99,8 +99,7 @@ const Home: React.FC = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const handleModalVisibility = useCallback(() => {
     setIsModalVisible(!isModalVisible);
-    console.warn(route.params);
-  }, [isModalVisible, route.params]);
+  }, [isModalVisible]);
 
   return (
     <>
